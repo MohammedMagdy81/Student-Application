@@ -1,3 +1,55 @@
 <resources>
     <string name="app_name">Student Application</string>
+    <string name="adaptive_ne_learning_app">Adaptive\nE-Learning App</string>
+    <string name="motivation_is_what_set_you_in_motion_n_habit_is_what_keeps_you_going">Motivation is what set you in motion,\n habit is what keeps you going</string>
+    <string name="first_see_learning">First see Learning</string>
+    <string name="connect_with_everyone">Connect With Everyone</string>
+    <string name="always_fascinated_learning">Always Fascinated Learning</string>
+    <string name="next">Next</string>
+    <string name="welcome_aboard">Welcome Aboard!</string>
+    <string name="let_s_get_your_career_ready">Let\'s get your career ready.</string>
+    <string name="enter_full_name">Enter Full Name</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_phone">Enter Phone</string>
+    <string name="enter_stage">Enter Your Stage</string>
+    <string name="signup">Sign Up</string>
+    <string name="already_have_account">Already have Account ?</string>
+    <string name="sign_up">Login</string>
+    <string name="forget_password">Forget Password ?</string>
+    <string name="login">Login</string>
+    <string name="dont_have_account">Don\'t Have Account ?</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="reset_password_will_send_to_you">Reset Password Will send to you</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="my_courses">Explore Courses</string>
+    <string name="my_account">My Account</string>
+    <string name="settings">Settings</string>
+    <string name="search_your_course">Search Your Course</string>
+    <string name="about_us">About us</string>
+
+    <string-array name="Stage_Names">
+        <item>الصف الأول الثانوي</item>
+        <item>الصف الثاني الثانوي</item>
+        <item>الصف الثالث الثانوي</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="quiz">Quiz</string>
+    <string name="selectImageTv">اختيار صورة</string>
+    <string name="full_name">الاسم كاملا</string>
+    <string name="phone_num">رقم الهاتف</string>
+    <string name="email">الإيميل</string>
+    <string name="updateTv">تحديث</string>
+    <string name="idStudent">الرقم التعريفي</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello">Hello</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="splash_desc">learn easy and fast with studee\nwatch video learning any time</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+
+
 </resources>

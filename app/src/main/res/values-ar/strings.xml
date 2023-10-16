@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="adaptive_ne_learning_app">Adaptive\nE-Learning App</string>
+    <string name="motivation_is_what_set_you_in_motion_n_habit_is_what_keeps_you_going">Motivation is what set you in motion,\n habit is what keeps you going</string>
+    <string name="first_see_learning">First see Learning</string>
+    <string name="connect_with_everyone">Connect With Everyone</string>
+    <string name="always_fascinated_learning">Always Fascinated Learning</string>
+    <string name="next">التالي</string>
+    <string name="welcome_aboard">Welcome Aboard!</string>
+    <string name="let_s_get_your_career_ready">Let\'s get your career ready.</string>
+    <string name="enter_full_name">أدخل الاسم كاملا</string>
+    <string name="enter_email">أدخل الإيميل</string>
+    <string name="enter_password">أدخل كلمة السر</string>
+    <string name="enter_phone">أدخل رقم الهاتف</string>
+    <string name="enter_stage">أدخل المرحلة التعليمة</string>
+    <string name="signup">تسجيل حساب جديد</string>
+    <string name="already_have_account">هل تمتلك حسابا ؟</string>
+    <string name="sign_up">تسجيل الدخول
+    </string>
+    <string name="forget_password">هل نسيت كلمة السر ؟</string>
+    <string name="login">تسجيل دخول</string>
+    <string name="dont_have_account">أليس لديك حساب ؟</string>
+    <string name="reset_password">تغيير كلمة السر</string>
+    <string name="reset_password_will_send_to_you">Reset Password Will send to you</string>
+    <string name="cancel">إلغاء</string>
+    <string name="confirm">تأكيد</string>
+    <string name="my_courses">استكشف المحاضرات</string>
+    <string name="my_account">الحساب الشخصي</string>
+    <string name="settings">الإعدادات</string>
+    <string name="search_your_course">ابحث عن محاضرة</string>
+    <string name="about_us">معلومات عن التطبيق</string>
+
+    <string name="hello">مرحبا </string>
+    <string name="welcome_back">أهلا بعودتك ..</string>
+
+
+
+    <string name="quiz">الامتحانات</string>
+
+</resources>
