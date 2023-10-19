@@ -26,11 +26,12 @@ object NetworkModule {
         loginInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         return OkHttpClient.Builder()
             .addInterceptor(loginInterceptor)
-            .connectTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(3, TimeUnit.SECONDS)
+            .callTimeout(3, TimeUnit.SECONDS)
             .addNetworkInterceptor(Interceptor { chain ->
                 val requestBuilder: Request.Builder = chain.request().newBuilder()
                 requestBuilder.header("Accept", "application/json")
-                requestBuilder.header("Content-Type","application/json")
+                requestBuilder.header("Content-Type", "application/json")
                 chain.proceed(requestBuilder.build())
             })
             .build()
@@ -49,7 +50,6 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
-
 
 
 }

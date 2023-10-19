@@ -27,6 +27,10 @@ class StudentRepositoryImpl(
         studentDatastore.setUserName(name)
     }
 
+    override suspend fun setPassword(password: String?) {
+        studentDatastore.setPassword(password)
+    }
+
     override fun getID(): Flow<Int?> = studentDatastore.getTeacherId()
 
     override fun getName(): Flow<String?> = studentDatastore.getUserName()
@@ -36,5 +40,7 @@ class StudentRepositoryImpl(
     override fun getToken(): Flow<String?> = studentDatastore.getToken()
 
     override fun getEmail(): Flow<String?> = studentDatastore.getEmail()
+    override fun getPassword(): Flow<String?> = studentDatastore.getPassword()
+
 
 }

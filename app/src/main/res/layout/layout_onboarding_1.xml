@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/dark_blue_color"
+    android:background="@color/splash_bg"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.Guideline
@@ -30,7 +30,7 @@
         android:gravity="center"
         android:letterSpacing=".05"
         android:text="@string/first_see_learning"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +44,7 @@
         android:layout_marginTop="32dp"
         android:gravity="center"
         android:text="forget about all the paper , get it all\n in one learning ."
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:letterSpacing=".05"

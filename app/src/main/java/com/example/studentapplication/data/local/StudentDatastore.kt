@@ -21,12 +21,13 @@ class StudentDatastore(private val context: Context) {
         private val NAME = stringPreferencesKey("name")
         private val PHONE = stringPreferencesKey("phone")
         private val EMAIL = stringPreferencesKey("email")
+        private val PASSWORD = stringPreferencesKey("password")
 
     }
 
     suspend fun setToken(tokenValue: String?) {
         dataStore.edit { preferences ->
-            preferences[TOKEN] = tokenValue?:""
+            preferences[TOKEN] = tokenValue ?: ""
         }
     }
 
@@ -45,9 +46,30 @@ class StudentDatastore(private val context: Context) {
             }
     }
 
+    suspend fun setPassword(password: String?) {
+        dataStore.edit { preferences ->
+            preferences[PASSWORD] = password ?: ""
+        }
+    }
+
+    fun getPassword(): Flow<String> {
+        return dataStore.data
+            .catch { exception ->
+                if (exception is IOException) {
+                    emit(emptyPreferences())
+                } else {
+                    throw exception
+                }
+            }
+            .map { preferences ->
+                val passord = preferences[PASSWORD] ?: ""
+                passord
+            }
+    }
+
     suspend fun setUserName(userName: String?) {
         dataStore.edit { preferences ->
-            preferences[NAME] = userName?:""
+            preferences[NAME] = userName ?: ""
         }
     }
 
@@ -68,7 +90,7 @@ class StudentDatastore(private val context: Context) {
 
     suspend fun setPhoneNo(phoneNo: String?) {
         dataStore.edit { preferences ->
-            preferences[PHONE] = phoneNo?:""
+            preferences[PHONE] = phoneNo ?: ""
         }
     }
 
@@ -110,7 +132,7 @@ class StudentDatastore(private val context: Context) {
 
     suspend fun setEmail(email: String?) {
         dataStore.edit { preferences ->
-            preferences[EMAIL] = email?:""
+            preferences[EMAIL] = email ?: ""
         }
     }
 

@@ -10,5 +10,7 @@ data class DatastoreUseCases(
     val getTokenUseCase: GetTokenUseCase,
     val getEmailUseCase: GetEmailUseCase,
     val getPhoneUseCase: GetPhoneUseCase,
-    val getNameUseCase: GetNameUseCase
+    val getNameUseCase: GetNameUseCase ,
+    val setPasswordUseCase: SetPasswordUseCase,
+    val getPasswordUseCase: GetPasswordUseCase
 )

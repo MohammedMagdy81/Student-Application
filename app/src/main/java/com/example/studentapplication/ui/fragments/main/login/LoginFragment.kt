@@ -40,15 +40,36 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater)
 
+        lifecycleScope.launch {
+            mainViewModel.getToken().collect {
+                it?.let { token ->
+                    userToken = token
+                }
+            }
+        }
+
         binding.apply {
 
             tvForgetPassword.setOnClickListener {
-                resetPasswordDialog {
-                    viewModel.resetPassword(token = userToken, newPassword = it)
-                }
+                resetPasswordDialog(
+                    onSendEmailClick = {
+                        viewModel.resetPassword(token = userToken, newPassword = it)
+                    },
+                    observeToPasswordValidation = { editText ->
+                        viewLifecycleOwner.lifecycleScope.launch {
+                            viewModel.passwordValidation.collect {
+                                if (it.password is AuthValidations.Error) {
+                                    withContext(Dispatchers.Main) {
+                                        editText.requestFocus()
+                                        editText.error = it.password.message
+                                    }
+                                }
+                            }
+                        }
+                    })
+                observeToResetPassword()
             }
 
-            observeToResetPassword()
 
             btnLogin.setOnClickListener {
                 val email = etLoginEmail.text.toString()
@@ -60,16 +81,20 @@ class LoginFragment : Fragment() {
 
 
         observeToLoginValidations()
+
         return binding.root
     }
 
+
     private fun observeToResetPassword() {
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.resetPassword.collect {
                 when (it) {
                     is State.Error -> {
                         binding.loginSpinkit.visibility = View.GONE
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
                     }
+
                     is State.Loading -> {
                         binding.loginSpinkit.visibility = View.VISIBLE
                     }
@@ -80,6 +105,7 @@ class LoginFragment : Fragment() {
                             "تم تغيير كلمة السر بنجاح .. ",
                             Snackbar.LENGTH_LONG
                         ).show()
+
                     }
                     else -> Unit
                 }

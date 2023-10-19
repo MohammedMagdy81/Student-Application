@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/dark_blue_color"
+    android:background="@color/splash_bg"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.Guideline
@@ -30,7 +30,7 @@
         android:gravity="center"
         android:letterSpacing=".05"
         android:text="@string/connect_with_everyone"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:gravity="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:text="always keep in touch with your tutor &amp;\n friends . let\'s get connected! ."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

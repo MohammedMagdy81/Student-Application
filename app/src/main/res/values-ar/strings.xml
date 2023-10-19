@@ -35,6 +35,18 @@
     <string name="hello">مرحبا </string>
     <string name="welcome_back">أهلا بعودتك ..</string>
 
+    <string name="home">الرئيسية</string>
+    <string name="profile">الصفحة الشخصية</string>
+    <string name="enter_new_password">أدخل كلمة السر الجديدة</string>
+
+    <string name="edit_profile">تعديل الصفحة الشخصية</string>
+    <string name="notifications">الإشعارات</string>
+    <string name="privacy_and_security">الخصوصية والأمان</string>
+    <string name="support_amp_about">سجل النشاطات</string>
+    <string name="my_lectures">My Lectures</string>
+    <string name="help">Help &amp; Support</string>
+
+
 
 
     <string name="quiz">الامتحانات</string>
