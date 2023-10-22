@@ -3,13 +3,17 @@
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_200">#00D9CD</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
     <color name="splash_bg">#8BF0F5F9</color>
     <color name="light_gray">#0C222444</color>
+    <color name="home_background_color">#F0F3F8</color>
     <color name="blue_color">#2778F0</color>
     <color name="dark_blue_color">#2A2575</color>
+    <color name="color_header">#344356</color>
+    <color name="color_header2">#5F6C7B</color>
+
 </resources>

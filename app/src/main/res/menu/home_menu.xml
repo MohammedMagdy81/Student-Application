@@ -5,27 +5,37 @@
         android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
         android:title="@string/home"
-        app:cnb_backgroundColor="@color/black"
+        app:cnb_backgroundColor="@color/teal_200"
         app:cnb_iconColor="@color/white"
         app:cnb_iconTintMode="src_in"
-        app:cnb_textColor="@color/dark_blue_color" />
+        app:cnb_textColor="@color/teal_200" />
 
     <item
         android:id="@+id/quizFragment"
         android:icon="@drawable/quiz"
         android:title="@string/quiz"
-        app:cnb_backgroundColor="@color/black"
+        app:cnb_backgroundColor="@color/teal_200"
         app:cnb_iconColor="@color/white"
         app:cnb_iconTintMode="src_in"
-        app:cnb_textColor="@color/dark_blue_color" />
+        app:cnb_textColor="@color/teal_200" />
+
+    <item
+        android:id="@+id/lecturesFragment"
+        android:title="@string/lectures"
+        android:icon="@drawable/lectures"
+        app:cnb_backgroundColor="@color/teal_200"
+        app:cnb_iconColor="@color/white"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="@color/teal_200"
+        />
 
     <item
         android:id="@+id/settingsFragment"
         android:icon="@drawable/ic_settings"
         android:title="@string/profile"
-        app:cnb_backgroundColor="@color/black"
+        app:cnb_backgroundColor="@color/teal_200"
         app:cnb_iconColor="@color/white"
         app:cnb_iconTintMode="src_in"
-        app:cnb_textColor="@color/dark_blue_color" />
+        app:cnb_textColor="@color/teal_200" />
 
 </menu>

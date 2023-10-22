@@ -20,4 +20,9 @@
         android:name="com.example.studentapplication.ui.fragments.home.homePage.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/lecturesFragment"
+        android:name="com.example.studentapplication.ui.fragments.home.lectures.LecturesFragment"
+        android:label="fragment_lectures"
+        tools:layout="@layout/fragment_lectures" />
 </navigation>

@@ -66,6 +66,8 @@
     <string name="server_error">هناك مشكلة في السيرفر حاول لاحقا!</string>
     <string name="internet_unavilable">تأكد من الاتصال بالانترنت أولا !</string>
     <string name="no_internet_found">لا يتوفر إنترنت تأكد من شبكة الجوال !</string>
+    <string name="lectures">Lectures</string>
+    <string name="tv_header2_home">what would you like to \nlearn today ? search below</string>
 
 
 </resources>
