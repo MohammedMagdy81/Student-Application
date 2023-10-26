@@ -84,7 +84,6 @@
         app:layout_constraintWidth_percent=".8" />
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/tvForgetPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -93,6 +92,7 @@
         android:textColor="@color/dark_blue_color"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/etLoginEmail"
 
         app:layout_constraintTop_toBottomOf="@id/etLoginPassword" />
@@ -108,9 +108,9 @@
         android:textAllCaps="false"
         android:textColor="@color/dark_blue_color"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/tvDontHaveAccount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvDontHaveAccount"
         app:layout_constraintTop_toBottomOf="@id/tvForgetPassword"
         app:layout_constraintWidth_percent=".7" />
 

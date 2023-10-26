@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_signupFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_signupFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -41,4 +44,9 @@
             android:id="@+id/action_onboardingFragment_to_signupFragment"
             app:destination="@id/signupFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.example.studentapplication.ui.fragments.main.notifications.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.studentapplication.ui.fragments.settings
+package com.example.studentapplication.ui.fragments.settings.edit_profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.studentapplication.R
 import com.example.studentapplication.databinding.FragmentEditProfileBinding
 import com.example.studentapplication.ui.fragments.shared.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
@@ -55,7 +53,7 @@ class EditProfileFragment : Fragment() {
 
         binding.apply {
             btnSaveChanges.setOnClickListener {
-                viewModel.updateProfile(token = userToken, name = )
+
             }
         }
         return binding.root

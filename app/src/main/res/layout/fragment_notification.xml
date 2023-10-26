@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_background_color"
+    tools:context=".ui.fragments.main.notifications.NotificationFragment">
+
+    <ImageView
+        android:id="@+id/imagNotifications"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/notifications_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".32"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".8" />
+
+    <TextView
+        android:id="@+id/tvNotifcations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="@string/notifications"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@id/imagNotifications"
+        app:layout_constraintStart_toStartOf="@id/imagNotifications"
+        app:layout_constraintTop_toBottomOf="@id/imagNotifications" />
+
+    <TextView
+        android:id="@+id/tvStayUpdated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:gravity="center"
+        android:letterSpacing=".02"
+        android:lineSpacingExtra="6dp"
+        android:padding="4dp"
+        android:text="@string/stay_updated"
+        android:textColor="#97445566"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/tvNotifcations"
+        app:layout_constraintStart_toStartOf="@id/tvNotifcations"
+        app:layout_constraintTop_toBottomOf="@id/tvNotifcations" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAllowNotifications"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_allow_notifications_bg"
+        android:paddingVertical="12dp"
+        android:text="@string/allow"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvStayUpdated"
+        app:layout_constraintWidth_percent=".5" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSkipNotifications"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_skip_notifications_bg"
+        android:paddingVertical="12dp"
+        android:text="@string/skip"
+        android:textAllCaps="false"
+        android:textColor="#8B222444"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/btnAllowNotifications"
+        app:layout_constraintStart_toStartOf="@id/btnAllowNotifications"
+        app:layout_constraintTop_toBottomOf="@id/btnAllowNotifications" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

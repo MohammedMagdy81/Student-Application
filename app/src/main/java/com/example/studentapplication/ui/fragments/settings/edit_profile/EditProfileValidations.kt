@@ -1,6 +1,5 @@
-package com.example.studentapplication.ui.fragments.settings
+package com.example.studentapplication.ui.fragments.settings.edit_profile
 
-import com.example.studentapplication.domin.model.StudentProfile
 import com.example.studentapplication.utils.AuthValidations
 import com.example.studentapplication.utils.genericFunctions.validateEmail
 import com.example.studentapplication.utils.genericFunctions.validatePassword

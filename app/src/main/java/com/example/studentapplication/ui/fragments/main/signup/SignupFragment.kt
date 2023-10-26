@@ -97,7 +97,7 @@ class SignupFragment : Fragment() {
                     }
                     is State.Success -> {
                         binding.registerSignupSpinkit.visibility = View.GONE
-                        goToHomeActivity()
+                        findNavController().navigate(R.id.action_signupFragment_to_notificationFragment)
                     }
                     else -> Unit
                 }
@@ -150,11 +150,5 @@ class SignupFragment : Fragment() {
 
     }
 
-    private fun goToHomeActivity() {
-        val intent = Intent(requireActivity(), HomeActivity::class.java).apply {
-            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-        }
-        startActivity(intent)
-    }
 
 }

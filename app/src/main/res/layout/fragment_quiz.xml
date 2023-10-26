@@ -3,8 +3,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.home.quiz.QuizFragment">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent=".1"
+        android:orientation="horizontal"
+        android:id="@+id/horizontalGuideLine"
+        />
+
+    <ImageView
+        android:id="@+id/imageQuizNotFound"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".3"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/quiz_img_bg"
+
+       app:layout_constraintTop_toBottomOf="@+id/horizontalGuideLine"
+        app:layout_constraintWidth_percent=".6" />
+
+    <TextView
+        android:id="@+id/tvNoQuiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/imageQuizNotFound"
+        app:layout_constraintTop_toBottomOf="@id/imageQuizNotFound"
+        app:layout_constraintEnd_toEndOf="@id/imageQuizNotFound"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_bold"
+        android:letterSpacing=".2"
+        android:layout_marginTop="32dp"
+        android:text="@string/no_quiz"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvNoQuiz"
+        app:layout_constraintStart_toStartOf="@id/tvNoQuiz"
+        app:layout_constraintEnd_toEndOf="@id/tvNoQuiz"
+        android:layout_marginTop="20dp"
+        android:text="@string/there_are_no_exams_available_now"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/dark_blue_color"
+        android:fontFamily="@font/open_sans_bold"
+        android:letterSpacing=".1"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

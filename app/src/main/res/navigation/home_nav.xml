@@ -9,7 +9,17 @@
         android:id="@+id/settingsFragment"
         android:name="com.example.studentapplication.ui.fragments.home.settings.SettingsFragment"
         android:label="@string/settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_allNotificationsFragment"
+            app:destination="@id/allNotificationsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_lecturesFragment"
+            app:destination="@id/lecturesFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/quizFragment"
         android:name="com.example.studentapplication.ui.fragments.home.quiz.QuizFragment"
@@ -25,4 +35,14 @@
         android:name="com.example.studentapplication.ui.fragments.home.lectures.LecturesFragment"
         android:label="fragment_lectures"
         tools:layout="@layout/fragment_lectures" />
+    <fragment
+        android:id="@+id/allNotificationsFragment"
+        android:name="com.example.studentapplication.ui.fragments.settings.allNotifications.AllNotificationsFragment"
+        android:label="AllNotificationsFragment"
+        tools:layout="@layout/fragment_all_notifications"/>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.studentapplication.ui.fragments.settings.edit_profile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
 </navigation>
