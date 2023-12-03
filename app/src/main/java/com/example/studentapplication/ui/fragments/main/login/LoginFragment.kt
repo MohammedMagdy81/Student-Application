@@ -9,17 +9,17 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.studentapplication.R
 import com.example.studentapplication.databinding.FragmentLoginBinding
 import com.example.studentapplication.ui.activities.HomeActivity
 import com.example.studentapplication.ui.activities.MainActivity
-import com.example.studentapplication.ui.fragments.shared.MainViewModel
 import com.example.studentapplication.utils.AuthValidations
 import com.example.studentapplication.utils.State
 import com.example.studentapplication.utils.genericFunctions.resetPasswordDialog
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -29,9 +29,9 @@ class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
     private val viewModel by viewModels<LoginViewModel>()
-    private val mainViewModel by viewModels<MainViewModel>()
 
-    private var userToken: String = ""
+
+    private var userToken: String? = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,38 +39,10 @@ class LoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater)
-
-        lifecycleScope.launch {
-            mainViewModel.getToken().collect {
-                it?.let { token ->
-                    userToken = token
-                }
-            }
-        }
-
         binding.apply {
-
-            tvForgetPassword.setOnClickListener {
-                resetPasswordDialog(
-                    onSendEmailClick = {
-                        viewModel.resetPassword(token = userToken, newPassword = it)
-                    },
-                    observeToPasswordValidation = { editText ->
-                        viewLifecycleOwner.lifecycleScope.launch {
-                            viewModel.passwordValidation.collect {
-                                if (it.password is AuthValidations.Error) {
-                                    withContext(Dispatchers.Main) {
-                                        editText.requestFocus()
-                                        editText.error = it.password.message
-                                    }
-                                }
-                            }
-                        }
-                    })
-                observeToResetPassword()
+            tvSignup.setOnClickListener{
+                findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
             }
-
-
             btnLogin.setOnClickListener {
                 val email = etLoginEmail.text.toString()
                 val password = etLoginPassword.text.toString()
@@ -88,16 +60,17 @@ class LoginFragment : Fragment() {
 
     private fun observeToResetPassword() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.resetPassword.collect {
+            viewModel.resetPassword.observe(viewLifecycleOwner) {
                 when (it) {
-                    is State.Error -> {
+                    is State.Failure -> {
                         binding.loginSpinkit.visibility = View.GONE
-                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), it.errorMessage, Toast.LENGTH_LONG).show()
                     }
 
                     is State.Loading -> {
                         binding.loginSpinkit.visibility = View.VISIBLE
                     }
+
                     is State.Success -> {
                         binding.loginSpinkit.visibility = View.GONE
                         Snackbar.make(
@@ -107,6 +80,7 @@ class LoginFragment : Fragment() {
                         ).show()
 
                     }
+
                     else -> Unit
                 }
             }
@@ -139,20 +113,23 @@ class LoginFragment : Fragment() {
     private fun observeToLogin() {
         val activity = requireActivity() as MainActivity
         lifecycleScope.launch {
-            viewModel.loginResult.collect {
+            viewModel.loginResult.observe(viewLifecycleOwner) {
                 when (it) {
-                    is State.Error -> {
+                    is State.Failure -> {
                         activity.exitLoadingScreen()
-                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), it.errorMessage, Toast.LENGTH_LONG).show()
                     }
+
                     State.Loading -> {
                         activity.showLoadingScreen("جاري تسجيل الدخول ..")
                     }
+
                     is State.Success -> {
                         activity.exitLoadingScreen()
                         goToHomeActivity()
 
                     }
+
                     State.Ideal -> Unit
                 }
             }

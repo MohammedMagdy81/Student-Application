@@ -54,21 +54,22 @@ class SignupFragment : Fragment() {
                 etStage.showDropDown()
             }
             btnSignup.setOnClickListener {
-                Log.d("SIGNUP_FRAGMENT", "Btn clicked")
-                val email = etEmail.text.toString()
-                val password = etPassword.text.toString()
-                val phone = etPhone.text.toString()
-                val name = etFullName.text.toString()
-                val className = etStage.text.toString()
-                val student = Student(
-                    email = email,
-                    password = password,
-                    fullName = name,
-                    phone = phone,
-                    className = className
-                )
-                viewModel.register(student)
-                observeToRegister()
+//                Log.d("SIGNUP_FRAGMENT", "Btn clicked")
+//                val email = etEmail.text.toString()
+//                val password = etPassword.text.toString()
+//                val phone = etPhone.text.toString()
+//                val name = etFullName.text.toString()
+//                val className = etStage.text.toString()
+//                val student = Student(
+//                    email = email,
+//                    password = password,
+//                    fullName = name,
+//                    phone = phone,
+//                    className = className
+//                )
+//                viewModel.register(student)
+//                observeToRegister()
+                goToHomeActivity()
             }
 
             observeToRegisterValidation()
@@ -84,21 +85,28 @@ class SignupFragment : Fragment() {
 
     private fun observeToRegister() {
         lifecycleScope.launch {
-            viewModel.registerResult.collect {
+            viewModel.registerLiveData.observe(viewLifecycleOwner) {
                 when (it) {
-                    is State.Error -> {
+                    is State.Failure -> {
                         binding.registerSignupSpinkit.visibility = View.GONE
-                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG)
-                            .show()
+                        Toast.makeText(
+                            requireContext(), it.errorMessage,
+                            Toast.LENGTH_LONG
+                        ).show()
+
                     }
+
                     State.Loading -> {
                         binding.registerSignupSpinkit.visibility = View.VISIBLE
 
                     }
+
                     is State.Success -> {
                         binding.registerSignupSpinkit.visibility = View.GONE
-                        findNavController().navigate(R.id.action_signupFragment_to_notificationFragment)
+                        goToHomeActivity()
+
                     }
+
                     else -> Unit
                 }
             }
@@ -148,6 +156,13 @@ class SignupFragment : Fragment() {
             className = arrayAdapter.getItem(position)!!
         }
 
+    }
+
+    private fun goToHomeActivity() {
+        val intent = Intent(requireActivity(), HomeActivity::class.java).apply {
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        startActivity(intent)
     }
 
 

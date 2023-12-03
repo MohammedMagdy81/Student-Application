@@ -73,6 +73,9 @@
     <string name="stay_updated">stay notified about new \nlectures and any updates</string>
     <string name="allow">Allow</string>
     <string name="skip">Skip</string>
+    <string name="lecture_desc">Lecture Desc</string>
+    <string name="lecture_note">Lecture Note</string>
+    <string name="view_pdf">View PDF</string>
 
 
 </resources>

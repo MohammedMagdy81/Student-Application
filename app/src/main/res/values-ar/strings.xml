@@ -45,10 +45,24 @@
     <string name="support_amp_about">سجل النشاطات</string>
     <string name="my_lectures">My Lectures</string>
     <string name="help">Help &amp; Support</string>
-
-
-
-
     <string name="quiz">الامتحانات</string>
+
+    <string name="name">الاسم</string>
+    <string name="phone">رقم الهاتف</string>
+    <string name="email_tv">الإيميل</string>
+    <string name="save_changes">حفظ التغييرات</string>
+    <string name="old_password">كلمة السر القديمة</string>
+    <string name="new_password">كلمة السر الجديدة</string>
+    <string name="student_is_blocked">أنت أصبحت غير مقيد ضمن الطلبة المستخدمين للتطبيق !</string>
+    <string name="server_error">هناك مشكلة في السيرفر حاول لاحقا!</string>
+    <string name="internet_unavilable">تأكد من الاتصال بالانترنت أولا !</string>
+    <string name="no_internet_found">لا يتوفر إنترنت تأكد من شبكة الجوال !</string>
+    <string name="lectures">المحاضرات</string>
+    <string name="tv_header2_home">ماذا تحب أن تتعلم اليوم \n استكشف الان </string>
+    <string name="no_quiz">لا يتوفر امتحانات!</string>
+    <string name="there_are_no_exams_available_now">There are no exams \n available now</string>
+    <string name="stay_updated">stay notified about new \nlectures and any updates</string>
+    <string name="allow">سماح</string>
+    <string name="skip">تخطي</string>
 
 </resources>

@@ -29,7 +29,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.studentapplication.ui.fragments.home.homePage.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_lectureDetailFragment"
+            app:destination="@id/lectureDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/lecturesFragment"
         android:name="com.example.studentapplication.ui.fragments.home.lectures.LecturesFragment"
@@ -45,4 +49,25 @@
         android:name="com.example.studentapplication.ui.fragments.settings.edit_profile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/lectureDetailFragment"
+        android:name="com.example.studentapplication.ui.fragments.home.lecturesDetail.LectureDetailFragment"
+        android:label="fragment_lecture_detail"
+        tools:layout="@layout/fragment_lecture_detail" >
+        <argument
+            android:name="item"
+            app:argType="com.example.studentapplication.data.remote.response.get_lectures.GetLecturesResponseItem" />
+        <action
+            android:id="@+id/action_lectureDetailFragment_to_fragmentPdfView"
+            app:destination="@id/fragmentPdfView" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentPdfView"
+        android:name="com.example.studentapplication.ui.fragments.home.lecturesDetail.FragmentPdfView"
+        android:label="fragment_pdf_view"
+        tools:layout="@layout/fragment_pdf_view" >
+        <argument
+            android:name="pdfUri"
+            app:argType="string" />
+    </fragment>
 </navigation>

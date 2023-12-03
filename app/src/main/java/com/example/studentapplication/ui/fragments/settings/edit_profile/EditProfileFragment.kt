@@ -1,16 +1,13 @@
 package com.example.studentapplication.ui.fragments.settings.edit_profile
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import com.example.studentapplication.databinding.FragmentEditProfileBinding
-import com.example.studentapplication.ui.fragments.shared.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -21,7 +18,7 @@ class EditProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentEditProfileBinding
     private val viewModel by viewModels<EditProfileViewModel>()
-    private val mainViewModel by viewModels<MainViewModel>()
+
 
     private var userToken: String = ""
     private var oldPassword:String = ""
@@ -41,14 +38,6 @@ class EditProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentEditProfileBinding.inflate(inflater)
         initData()
-        lifecycleScope.launch {
-            mainViewModel.getToken().collect{
-                if (it != null) {
-                    userToken = it
-                }
-            }
-            mainViewModel
-        }
 
 
         binding.apply {

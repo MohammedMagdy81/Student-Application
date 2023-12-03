@@ -1,24 +1,37 @@
 package com.example.studentapplication.data.repository
 
 import com.example.studentapplication.data.remote.ApiService
-import com.example.studentapplication.data.remote.response.ResetPasswordResponse
+import com.example.studentapplication.data.remote.response.ForgetPasswordResponse
+import com.example.studentapplication.data.remote.response.LogoutResponse
 import com.example.studentapplication.data.remote.response.StudentDto
+import com.example.studentapplication.data.remote.safeApiCall
+import com.example.studentapplication.domin.model.ForgetPasswordRequest
+import com.example.studentapplication.domin.model.LoginRequest
 import com.example.studentapplication.domin.model.Student
 import com.example.studentapplication.domin.repository.AuthRepository
-import retrofit2.Response
+import com.example.studentapplication.utils.PreferencesKeys.ACCESS_TOKEN
+import com.example.studentapplication.utils.PreferencesKeys.CLASS_NAME
+import com.example.studentapplication.utils.PreferencesKeys.EMAIL
+import com.example.studentapplication.utils.PreferencesKeys.NAME
+import com.example.studentapplication.utils.PreferencesKeys.PHONE
+import com.example.studentapplication.utils.State
+import javax.inject.Inject
 
-class AuthRepositoryImpl(private val apiService: ApiService) : AuthRepository {
+class AuthRepositoryImpl @Inject constructor(
+    private val apiService: ApiService,
+) : AuthRepository {
+    override suspend fun register(student: Student): State<StudentDto?> =
+        safeApiCall {
+            apiService.register(student)
+        }
 
-    override suspend fun register(student: Student): Response<StudentDto?> =
-        apiService.register(student)
 
-    override suspend fun login(email: String, password: String): Response<StudentDto?> =
-        apiService.login(email, password)
+    override suspend fun login(email: String, password: String): State<StudentDto?> =
+        safeApiCall {
+            apiService.login(LoginRequest(email = email, password = password))
+        }
 
-    override suspend fun resetPassword(
-        token: String,
-        newPassword: String
-    ): Response<ResetPasswordResponse> =
-        apiService.resetPassword(token = "Bearer $token", password = newPassword)
+
+
 
 }

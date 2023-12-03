@@ -11,29 +11,31 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/home_nav" />
 
+
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_gravity="bottom"
+        android:background="@drawable/bottom_menu_bg"
         android:elevation="16dp"
-        app:cnb_iconSize="16sp"
-        app:cnb_badgeColor="@color/black"
         android:padding="8dp"
+        app:cnb_animationDuration="175"
+        app:cnb_badgeColor="@color/black"
+        app:cnb_iconSize="16sp"
+        app:cnb_menuResource="@menu/home_menu"
+
         app:cnb_minExpandedWidth="23dp"
         app:cnb_orientationMode="horizontal"
-        app:cnb_animationDuration="175"
-        android:background="@drawable/bottom_menu_bg"
-        app:cnb_menuResource="@menu/home_menu" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

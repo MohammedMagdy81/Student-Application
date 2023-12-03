@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.home.lecturesDetail.LectureDetailFragment">
+
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="wrap_content"
+        android:layout_height="308dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tvLecName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/videoView"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="16dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:text="@string/lecture_note"
+        />
+    <TextView
+        android:id="@+id/lecName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvLecName"
+        app:layout_constraintStart_toStartOf="@id/tvLecName"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:maxLines="5"
+        android:gravity="center"
+        android:text="Hello lecture desc"
+        android:textColor="@color/dark_blue_color"
+        />
+
+    <TextView
+        android:id="@+id/tvLecDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/lecName"
+        app:layout_constraintStart_toStartOf="@id/lecName"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:text="@string/lecture_desc"
+        />
+    <TextView
+        android:id="@+id/lecDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvLecDesc"
+        app:layout_constraintStart_toStartOf="@id/tvLecDesc"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:maxLines="5"
+        android:gravity="center"
+        android:text="Hello lecture desc"
+        android:textColor="@color/dark_blue_color"
+        />
+
+    <TextView
+        android:id="@+id/tvLecNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/lecDesc"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="16dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:text="@string/lecture_note"
+        />
+    <TextView
+        android:id="@+id/lecNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvLecNote"
+        app:layout_constraintStart_toStartOf="@id/tvLecDesc"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:maxLines="5"
+        android:gravity="center"
+        android:text="Hello lecture desc"
+        android:textColor="@color/dark_blue_color"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnShowPdf"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/lecNote"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/lecNote"
+        app:layout_constraintWidth_percent=".5"
+        android:background="@drawable/btn_pdf_bg"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:text="@string/view_pdf"
+        android:drawableStart="@drawable/ic_pdf"
+        android:paddingStart="16dp"
+        tools:ignore="RtlSymmetry" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+

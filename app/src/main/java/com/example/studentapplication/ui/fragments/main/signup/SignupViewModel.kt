@@ -1,50 +1,41 @@
 package com.example.studentapplication.ui.fragments.main.signup
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.studentapplication.data.remote.response.StudentDto
 import com.example.studentapplication.domin.model.Student
-import com.example.studentapplication.domin.use_cases.auth.AuthUseCases
-import com.example.studentapplication.domin.use_cases.auth.RegisterUseCase
+import com.example.studentapplication.domin.repository.AuthRepository
 import com.example.studentapplication.utils.State
-import com.example.studentapplication.utils.genericFunctions.*
+import com.example.studentapplication.utils.genericFunctions.validateClassName
+import com.example.studentapplication.utils.genericFunctions.validateEmail
+import com.example.studentapplication.utils.genericFunctions.validateName
+import com.example.studentapplication.utils.genericFunctions.validatePassword
+import com.example.studentapplication.utils.genericFunctions.validatePhone
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class SignupViewModel @Inject constructor(
-    private val authUseCases: AuthUseCases
+    private val authRepository: AuthRepository
 ) : ViewModel() {
 
-    private val _registerResult = MutableStateFlow<State<StudentDto?>>(State.Ideal)
-    val registerResult: StateFlow<State<StudentDto?>> = _registerResult
+    private val _registerLiveData = MutableLiveData<State<StudentDto?>>()
+    val registerLiveData: LiveData<State<StudentDto?>> = _registerLiveData
 
     private val _registerFields = Channel<RegisterFieldsState>()
     val registerFields = _registerFields.receiveAsFlow()
 
-    private val errorHandler = CoroutineExceptionHandler { _, t ->
-        viewModelScope.launch {
-            _registerResult.emit(State.Error(t.message.toString()))
-        }
-    }
-
 
     fun register(student: Student) {
         if (checkRegisterValidation(student)) {
-            viewModelScope.launch(errorHandler) {
-                val registerResponse = authUseCases.registerUseCase.invoke(student)
-                if (registerResponse.isSuccessful)
-                    _registerResult.emit(State.Success(registerResponse.body()))
-                else
-                    _registerResult.emit(State.Error(registerResponse.message()))
+            viewModelScope.launch {
+                _registerLiveData.value = authRepository.register(student)
             }
-
         } else {
             val registerFieldsState = RegisterFieldsState(
                 email = validateEmail(student.email),
@@ -58,6 +49,7 @@ class SignupViewModel @Inject constructor(
             }
         }
     }
+
 }
 
 

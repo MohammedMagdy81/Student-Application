@@ -10,7 +10,7 @@ data class LoginFieldsState(
 )
 
 data class PasswordFieldState(
-    val password: AuthValidations
+    val email: AuthValidations
 )
 fun checkLoginValidation(email: String, password: String): Boolean {
     val validateEmail = validateEmail(email)
@@ -20,8 +20,8 @@ fun checkLoginValidation(email: String, password: String): Boolean {
             validatePassword is AuthValidations.Success
 }
 
-fun checkPassword(password: String): Boolean {
-    val validateNewPassword = validatePassword(password)
-    return validateNewPassword is AuthValidations.Success
+fun checkEmailResetPassword(email: String): Boolean {
+    val validateEmail = validateEmail(email)
+    return validateEmail is AuthValidations.Success
 }
 
