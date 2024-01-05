@@ -31,7 +31,6 @@
         app:cnb_badgeColor="@color/black"
         app:cnb_iconSize="16sp"
         app:cnb_menuResource="@menu/home_menu"
-
         app:cnb_minExpandedWidth="23dp"
         app:cnb_orientationMode="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"

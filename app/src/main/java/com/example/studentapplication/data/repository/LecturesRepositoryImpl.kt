@@ -11,7 +11,6 @@ class LecturesRepositoryImpl @Inject constructor(
     private val apiService: ApiService
 ) : LecturesRepository {
     override suspend fun getAllLectures(token: String) =
-        safeApiCall {
-            apiService.getAllLectures(token = "Bearer $token")
-        }
+        apiService.getAllLectures(token = "Bearer $token")
+
 }

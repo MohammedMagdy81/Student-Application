@@ -3,8 +3,10 @@ package com.example.studentapplication.di
 import com.example.studentapplication.data.remote.ApiService
 import com.example.studentapplication.data.repository.AuthRepositoryImpl
 import com.example.studentapplication.data.repository.LecturesRepositoryImpl
+import com.example.studentapplication.data.repository.QuizRepositoryImpl
 import com.example.studentapplication.domin.repository.AuthRepository
 import com.example.studentapplication.domin.repository.LecturesRepository
+import com.example.studentapplication.domin.repository.QuizRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,5 +26,8 @@ object RepositoryModule {
     fun provideLecturesRepository(apiService: ApiService): LecturesRepository =
         LecturesRepositoryImpl(apiService)
 
+    @Provides
+    fun provideQuizRepository(apiService: ApiService): QuizRepository =
+        QuizRepositoryImpl(apiService)
 
 }

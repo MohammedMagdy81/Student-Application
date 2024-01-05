@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans_bold"
-            android:text="Hi, Antony"
+            tools:text="Hi, Antony"
             android:textColor="@color/color_header"
             android:textSize="26sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
             android:fontFamily="@font/open_sans_medium"
-            android:text="Lectures"
+            android:text="@string/lectures"
             android:textColor="@color/color_header"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="@id/layoutSearch"
@@ -109,10 +109,34 @@
             android:layout_margin="12dp"
             android:orientation="horizontal"
             android:padding="4dp"
+
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="@id/tvLectures"
             app:layout_constraintTop_toBottomOf="@id/tvLectures"
             tools:listitem="@layout/item_layout_lectures" />
+        <include
+            android:id="@+id/layoutNoInternet"
+            layout="@layout/layout_no_internet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="32dp"
+            android:visibility="gone"
+            />
+        <include
+            android:id="@+id/layoutEmpty"
+            layout="@layout/layout_empty"
+            app:layout_constraintTop_toBottomOf="@id/tvLectures"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="32dp"
+            android:visibility="gone"
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

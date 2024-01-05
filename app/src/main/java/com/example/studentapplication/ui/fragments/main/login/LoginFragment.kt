@@ -1,7 +1,9 @@
 package com.example.studentapplication.ui.fragments.main.login
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,14 +13,16 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.studentapplication.R
+import com.example.studentapplication.data.local.preferences.ModelPreferencesManager
+import com.example.studentapplication.data.remote.response.auth.RegisterResponse
 import com.example.studentapplication.databinding.FragmentLoginBinding
 import com.example.studentapplication.ui.activities.HomeActivity
 import com.example.studentapplication.ui.activities.MainActivity
 import com.example.studentapplication.utils.AuthValidations
+import com.example.studentapplication.utils.Constants.STUDENT_KEY
 import com.example.studentapplication.utils.State
-import com.example.studentapplication.utils.genericFunctions.resetPasswordDialog
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -30,9 +34,6 @@ class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private val viewModel by viewModels<LoginViewModel>()
 
-
-    private var userToken: String? = ""
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,7 +41,7 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater)
         binding.apply {
-            tvSignup.setOnClickListener{
+            tvSignup.setOnClickListener {
                 findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
             }
             btnLogin.setOnClickListener {
@@ -53,38 +54,7 @@ class LoginFragment : Fragment() {
 
 
         observeToLoginValidations()
-
         return binding.root
-    }
-
-
-    private fun observeToResetPassword() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.resetPassword.observe(viewLifecycleOwner) {
-                when (it) {
-                    is State.Failure -> {
-                        binding.loginSpinkit.visibility = View.GONE
-                        Toast.makeText(requireContext(), it.errorMessage, Toast.LENGTH_LONG).show()
-                    }
-
-                    is State.Loading -> {
-                        binding.loginSpinkit.visibility = View.VISIBLE
-                    }
-
-                    is State.Success -> {
-                        binding.loginSpinkit.visibility = View.GONE
-                        Snackbar.make(
-                            requireView(),
-                            "تم تغيير كلمة السر بنجاح .. ",
-                            Snackbar.LENGTH_LONG
-                        ).show()
-
-                    }
-
-                    else -> Unit
-                }
-            }
-        }
     }
 
     private fun observeToLoginValidations() {
@@ -117,7 +87,7 @@ class LoginFragment : Fragment() {
                 when (it) {
                     is State.Failure -> {
                         activity.exitLoadingScreen()
-                        Toast.makeText(requireContext(), it.errorMessage, Toast.LENGTH_LONG).show()
+                        Toasty.error(requireContext(), it.errorMessage, Toast.LENGTH_LONG).show()
                     }
 
                     State.Loading -> {
@@ -125,12 +95,33 @@ class LoginFragment : Fragment() {
                     }
 
                     is State.Success -> {
-                        activity.exitLoadingScreen()
-                        goToHomeActivity()
+                        if (it.data?.srialNumber != getSerialNumber()) {
+                            activity.exitLoadingScreen()
+                            Toasty.error(
+                                requireContext(),
+                                "لا يمكن تسجيل الدخول بنفس الايميل علي أكتر من جهاز !",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        } else {
+                            it.data.apply {
+                                val response = RegisterResponse(
+                                    address,
+                                    phone,
+                                    name,
+                                    isActive,
+                                    srialNumber,
+                                    email,
+                                    token
+                                )
+                                insertData(response)
+                            }
+
+                            activity.exitLoadingScreen()
+                            goToHomeActivity()
+                        }
 
                     }
-
-                    State.Ideal -> Unit
+                    else -> {}
                 }
             }
         }
@@ -142,6 +133,22 @@ class LoginFragment : Fragment() {
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         }
         startActivity(intent)
+    }
+
+    @SuppressLint("HardwareIds")
+    private fun getSerialNumber(): String {
+        return Settings.Secure.getString(
+            requireContext().contentResolver,
+            Settings.Secure.ANDROID_ID
+        )
+    }
+
+    private fun insertData(teacher: RegisterResponse?) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            teacher?.let { teacherResponse ->
+                ModelPreferencesManager.put(teacherResponse, STUDENT_KEY)
+            }
+        }
     }
 
 }

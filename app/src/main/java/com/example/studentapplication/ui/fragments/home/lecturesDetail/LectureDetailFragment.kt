@@ -1,23 +1,31 @@
 package com.example.studentapplication.ui.fragments.home.lecturesDetail
 
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.MediaController
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.studentapplication.R
 import com.example.studentapplication.data.remote.response.get_lectures.GetLecturesResponseItem
 import com.example.studentapplication.databinding.FragmentLectureDetailBinding
+import com.example.studentapplication.utils.ViewsUtils.hideBottomNav
+
 
 class LectureDetailFragment : Fragment() {
     private val args by navArgs<LectureDetailFragmentArgs>()
     private lateinit var itemLecture: GetLecturesResponseItem
 
     private lateinit var binding: FragmentLectureDetailBinding
+
+    // declaring a null variable for MediaController
+    var mediaControls: MediaController? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +40,7 @@ class LectureDetailFragment : Fragment() {
                 )
             findNavController().navigate(action)
         }
+
         return binding.root
     }
 
@@ -64,7 +73,8 @@ class LectureDetailFragment : Fragment() {
             videoView.setMediaController(mediaController)
             videoView.setVideoURI(uri)
             videoView.requestFocus()
-            videoView.start()
+            videoView.start(); //Start here
+
 
         }
 
@@ -73,6 +83,11 @@ class LectureDetailFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         binding.videoView.stopPlayback()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        hideBottomNav()
     }
 
 

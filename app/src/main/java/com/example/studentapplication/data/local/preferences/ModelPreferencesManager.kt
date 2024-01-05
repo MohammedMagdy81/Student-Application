@@ -22,6 +22,9 @@ object ModelPreferencesManager {
             PREFERENCES_FILE_NAME, Context.MODE_PRIVATE)
     }
 
+    fun deletePref() = preferences.edit().clear().apply()
+
+
     /**
      * Saves object into the Preferences.
      *

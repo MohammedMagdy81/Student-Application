@@ -5,12 +5,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.studentapplication.data.remote.response.ForgetPasswordResponse
-import com.example.studentapplication.data.remote.response.StudentDto
-import com.example.studentapplication.domin.model.ForgetPasswordRequest
+import com.example.studentapplication.data.remote.response.auth.LoginResponse
 import com.example.studentapplication.domin.repository.AuthRepository
 import com.example.studentapplication.utils.Network
-import com.example.studentapplication.utils.PreferencesKeys
 import com.example.studentapplication.utils.State
 import com.example.studentapplication.utils.genericFunctions.validateEmail
 import com.example.studentapplication.utils.genericFunctions.validatePassword
@@ -26,54 +23,52 @@ class LoginViewModel @Inject constructor(
     private val app: Application
 ) : AndroidViewModel(app) {
 
-    private val _loginResult = MutableLiveData<State<StudentDto?>>()
-    val loginResult: LiveData<State<StudentDto?>> = _loginResult
+    private val _loginResult = MutableLiveData<State<LoginResponse?>>()
+    val loginResult: LiveData<State<LoginResponse?>> = _loginResult
 
-    private val _resetPassword = MutableLiveData<State<ForgetPasswordResponse?>>()
-    val resetPassword: LiveData<State<ForgetPasswordResponse?>> = _resetPassword
 
     private val _loginValidation = Channel<LoginFieldsState>()
     val loginValidation = _loginValidation.receiveAsFlow()
 
-    private val _passwordValidation = Channel<PasswordFieldState>()
-    val passwordValidation = _passwordValidation.receiveAsFlow()
-
-
     fun login(email: String, password: String) {
-        if (checkLoginValidation(email, password)) {
-            if (Network.isConnected()) {
+        if (Network.isConnected()) {
+            if (checkLoginValidation(email, password)) {
+                _loginResult.postValue(State.Loading)
                 viewModelScope.launch {
-                    _loginResult.value = authRepository.login(email, password)
+                    val response = authRepository.login(email, password)
+                    if (response.isSuccessful) {
+                        _loginResult.postValue(State.Success(response.body()))
+                    } else {
+                        when (response.code()) {
+                            400 -> {
+                                _loginResult.postValue(State.Failure("تأكد من صيغة الايميل وكلمة السر "))
+                            }
+
+                            401 -> {
+                                _loginResult.postValue(State.Failure("هذا الايميل غير مسجل لدينا ! أو ربما تكون كلمة السر غير صحيحة "))
+                            }
+
+                            else -> {
+                                _loginResult.postValue(State.Failure("حدث خطأ غير متوقع حاول مرة أخري !"))
+                            }
+                        }
+                    }
+                }
+
+            } else {
+                val loginFieldsState = LoginFieldsState(
+                    email = validateEmail(email),
+                    password = validatePassword(password)
+                )
+                viewModelScope.launch {
+                    _loginValidation.send(loginFieldsState)
                 }
             }
-        } else {
-            val loginFieldsState = LoginFieldsState(
-                email = validateEmail(email),
-                password = validatePassword(password)
-            )
-            viewModelScope.launch {
-                _loginValidation.send(loginFieldsState)
-            }
-        }
+        } else _loginResult.postValue(State.Failure("لا يتوفر إنترت تأكد من اتصالك جيدا ثم أعد المحاولة !"))
     }
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

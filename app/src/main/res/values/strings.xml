@@ -76,6 +76,19 @@
     <string name="lecture_desc">Lecture Desc</string>
     <string name="lecture_note">Lecture Note</string>
     <string name="view_pdf">View PDF</string>
+    <string name="enter_address">Enter Address</string>
+    <string name="logout">Logout</string>
+    <string name="enter_code">Enter Code :</string>
+    <string name="logout_from_application">Logout From Application</string>
+    <string name="account">Account</string>
+
+    <string name="no_internet_connection">No Internet connection</string>
+    <string name="no_item_found">no items found</string>
+    <string name="quiz_name">Quiz Name</string>
+    <string name="quiz_subject">Quiz Subject</string>
+    <string name="quiz_time">Quiz Time</string>
+    <string name="quiz_questions_count">Questions Count</string>
+    <string name="tv_quiz_completed">تم الامتحان بنجاح</string>
 
 
 </resources>

@@ -64,8 +64,9 @@
         android:layout_marginTop="10dp"
         android:textSize="18sp"
         android:maxLines="5"
+        android:paddingEnd="32dp"
         android:gravity="center"
-        android:text="Hello lecture desc"
+        tools:text="Hello lecture desc"
         android:textColor="@color/dark_blue_color"
         />
 
@@ -89,8 +90,9 @@
         android:layout_marginTop="10dp"
         android:textSize="18sp"
         android:maxLines="5"
+        android:paddingEnd="32dp"
         android:gravity="center"
-        android:text="Hello lecture desc"
+        tools:text="Hello lecture desc"
         android:textColor="@color/dark_blue_color"
         />
 

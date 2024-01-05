@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Account"
+        android:text="@string/account"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@id/settings_icBack"
@@ -46,8 +46,9 @@
         android:layout_marginTop="12dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
-        app:layout_constraintStart_toStartOf="@id/tvAccount"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvAccount"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent=".8"
 
         >
@@ -150,8 +151,9 @@
         android:layout_marginTop="12dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
-        app:layout_constraintStart_toStartOf="@id/tvSupport"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvSupport"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent=".8">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -166,6 +168,7 @@
                 android:layout_height="28dp"
                 android:layout_margin="12dp"
                 android:padding="4dp"
+                android:visibility="gone"
                 android:src="@drawable/lectures"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -177,6 +180,7 @@
                 android:text="@string/my_lectures"
                 android:textColor="@color/black"
                 android:textSize="18sp"
+                android:visibility="gone"
                 android:fontFamily="@font/open_sans_bold"
                 app:layout_constraintBottom_toBottomOf="@id/icMyLectures"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -205,6 +209,30 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/icHelp"
                 app:layout_constraintTop_toTopOf="@id/icHelp" />
+
+            <ImageView
+                android:id="@+id/icLogout"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="12dp"
+                android:padding="4dp"
+                android:src="@drawable/logout"
+                app:layout_constraintTop_toBottomOf="@id/icHelp"
+                app:layout_constraintStart_toStartOf="@id/icHelp"/>
+
+            <TextView
+                android:id="@+id/tvlogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/logout"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans_bold"
+                app:layout_constraintBottom_toBottomOf="@id/icLogout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/icLogout"
+                app:layout_constraintTop_toTopOf="@id/icLogout" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

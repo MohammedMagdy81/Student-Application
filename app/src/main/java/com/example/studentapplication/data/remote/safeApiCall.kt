@@ -25,7 +25,7 @@ suspend fun <T> safeApiCall(
                 }
 
                 else -> {
-                    State.Failure("حدث خطأ غير متوقع يرجي المحاولة لاحقا")
+                    State.Failure("حدث خطأ ما ")
                 }
             }
         }

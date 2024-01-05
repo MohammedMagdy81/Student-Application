@@ -29,6 +29,8 @@ fun validateName(name: String): AuthValidations {
         AuthValidations.Error("الاسم لا يمكن أن يكون فارغا !")
     else if (name.length < 8)
         AuthValidations.Error("لابد أن يكون الاسم أكبر من 8 حروف!")
+    else if (name.contains(" "))
+        AuthValidations.Error("لا يمكن للاسم أن يحتوي علي مسافات !")
     else
         AuthValidations.Success
 }
@@ -41,9 +43,9 @@ fun validatePhone(phone: String): AuthValidations {
     return AuthValidations.Success
 }
 
-fun validateClassName(className: String): AuthValidations {
+fun validateAddress(className: String): AuthValidations {
     if (className.isEmpty())
-        return AuthValidations.Error("قم باختيار السنة الدراسية المقيد بها !")
+        return AuthValidations.Error("قم باختيار عنوان !")
     return AuthValidations.Success
 
 }

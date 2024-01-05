@@ -1,60 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.home.quiz.QuizFragment">
 
+    <include
+        layout="@layout/layout_no_internet"
+        android:id="@+id/layoutNoInternet"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spinkit"
+        style="@style/SpinKitView.Large.CubeGrid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:keepScreenOn="true"
+        android:visibility="gone"
+        app:SpinKit_Color="@color/teal_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".5" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/allQuizzesRv"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:padding="4dp"
+        tools:listitem="@layout/item_all_quizzes"
+        />
+
+    <include
+        android:id="@+id/layoutError"
+        android:visibility="gone"
+        layout="@layout/layout_error"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent=".1"
         android:orientation="horizontal"
-        android:id="@+id/horizontalGuideLine"
-        />
+        app:layout_constraintGuide_percent=".1" />
 
     <ImageView
         android:id="@+id/imageQuizNotFound"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:src="@drawable/quiz_img_bg"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".3"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/quiz_img_bg"
-
-       app:layout_constraintTop_toBottomOf="@+id/horizontalGuideLine"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalGuideLine"
         app:layout_constraintWidth_percent=".6" />
 
     <TextView
         android:id="@+id/tvNoQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/imageQuizNotFound"
-        app:layout_constraintTop_toBottomOf="@id/imageQuizNotFound"
-        app:layout_constraintEnd_toEndOf="@id/imageQuizNotFound"
-        android:textSize="24sp"
-        android:textColor="@color/black"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/open_sans_bold"
         android:letterSpacing=".2"
-        android:layout_marginTop="32dp"
         android:text="@string/no_quiz"
-        />
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/imageQuizNotFound"
+        app:layout_constraintStart_toStartOf="@id/imageQuizNotFound"
+        app:layout_constraintTop_toBottomOf="@id/imageQuizNotFound" />
 
     <TextView
+        android:visibility="gone"
+        android:id="@+id/tvNoFoundQuizDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvNoQuiz"
-        app:layout_constraintStart_toStartOf="@id/tvNoQuiz"
-        app:layout_constraintEnd_toEndOf="@id/tvNoQuiz"
         android:layout_marginTop="20dp"
-        android:text="@string/there_are_no_exams_available_now"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:textColor="@color/dark_blue_color"
         android:fontFamily="@font/open_sans_bold"
+        android:gravity="center"
         android:letterSpacing=".1"
-        />
+        android:text="@string/there_are_no_exams_available_now"
+        android:textColor="@color/dark_blue_color"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/tvNoQuiz"
+        app:layout_constraintStart_toStartOf="@id/tvNoQuiz"
+        app:layout_constraintTop_toBottomOf="@id/tvNoQuiz" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

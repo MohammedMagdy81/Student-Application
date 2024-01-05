@@ -1,37 +1,46 @@
 package com.example.studentapplication.ui.fragments.main.signup
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.provider.Settings
+import android.telephony.TelephonyManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.studentapplication.R
+import com.example.studentapplication.data.local.preferences.ModelPreferencesManager
+import com.example.studentapplication.data.remote.response.auth.RegisterResponse
 import com.example.studentapplication.databinding.FragmentSignupBinding
-import com.example.studentapplication.domin.model.Student
 import com.example.studentapplication.ui.activities.HomeActivity
+import com.example.studentapplication.ui.activities.MainActivity
 import com.example.studentapplication.utils.AuthValidations
+import com.example.studentapplication.utils.Constants.STUDENT_KEY
 import com.example.studentapplication.utils.State
+import com.example.studentapplication.utils.ViewsUtils.hideViews
+import com.example.studentapplication.utils.ViewsUtils.showViews
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+
 
 @AndroidEntryPoint
 class SignupFragment : Fragment() {
 
     private lateinit var binding: FragmentSignupBinding
     private val viewModel by viewModels<SignupViewModel>()
-    lateinit var arrayAdapter: ArrayAdapter<String>
 
-    private lateinit var className: String
+    //lateinit var arrayAdapter: ArrayAdapter<String>
+
+    //private lateinit var className: String
 
 
     override fun onCreateView(
@@ -40,11 +49,11 @@ class SignupFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentSignupBinding.inflate(inflater)
-        arrayAdapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_list_item_1,
-            resources.getStringArray(R.array.Stage_Names)
-        )
+//        arrayAdapter = ArrayAdapter(
+//            requireContext(),
+//            android.R.layout.simple_list_item_1,
+//            resources.getStringArray(R.array.Stage_Names)
+//        )
         binding.apply {
             etStage.onItemClickListener =
                 AdapterView.OnItemClickListener { parent, view, position, id ->
@@ -55,21 +64,14 @@ class SignupFragment : Fragment() {
             }
             btnSignup.setOnClickListener {
 //                Log.d("SIGNUP_FRAGMENT", "Btn clicked")
-//                val email = etEmail.text.toString()
-//                val password = etPassword.text.toString()
-//                val phone = etPhone.text.toString()
-//                val name = etFullName.text.toString()
-//                val className = etStage.text.toString()
-//                val student = Student(
-//                    email = email,
-//                    password = password,
-//                    fullName = name,
-//                    phone = phone,
-//                    className = className
-//                )
-//                viewModel.register(student)
-//                observeToRegister()
-                goToHomeActivity()
+                val email = etEmail.text.toString()
+                val password = etPassword.text.toString()
+                val phone = etPhone.text.toString()
+                val name = etFullName.text.toString()
+                val address = etAddress.text.toString()
+
+                viewModel.register(email, password, name, phone, address, getSerialNumber())
+                observeToRegister()
             }
 
             observeToRegisterValidation()
@@ -77,18 +79,28 @@ class SignupFragment : Fragment() {
                 findNavController().navigate(R.id.action_signupFragment_to_loginFragment)
             }
         }
-        binding.etStage.setAdapter(arrayAdapter);
+        //binding.etStage.setAdapter(arrayAdapter);
         binding.etStage.isCursorVisible = false;
 
         return binding.root
     }
 
+    @SuppressLint("HardwareIds")
+    private fun getSerialNumber(): String {
+        return Settings.Secure.getString(
+            requireContext().contentResolver,
+            Settings.Secure.ANDROID_ID
+        )
+    }
+
+
     private fun observeToRegister() {
+        val activity = requireActivity() as MainActivity
         lifecycleScope.launch {
             viewModel.registerLiveData.observe(viewLifecycleOwner) {
                 when (it) {
                     is State.Failure -> {
-                        binding.registerSignupSpinkit.visibility = View.GONE
+                        activity.exitLoadingScreen()
                         Toast.makeText(
                             requireContext(), it.errorMessage,
                             Toast.LENGTH_LONG
@@ -97,12 +109,14 @@ class SignupFragment : Fragment() {
                     }
 
                     State.Loading -> {
-                        binding.registerSignupSpinkit.visibility = View.VISIBLE
-
+                        activity.showLoadingScreen("جاري تسجيل الدخول ..")
                     }
 
                     is State.Success -> {
-                        binding.registerSignupSpinkit.visibility = View.GONE
+                        it.data?.let {
+                            insertData(it)
+                        }
+                        activity.exitLoadingScreen()
                         goToHomeActivity()
 
                     }
@@ -140,10 +154,10 @@ class SignupFragment : Fragment() {
                         binding.etPhone.error = it.phone.message
                     }
                 }
-                if (it.className is AuthValidations.Error) {
+                if (it.address is AuthValidations.Error) {
                     withContext(Dispatchers.Main) {
-                        binding.etStage.requestFocus()
-                        binding.etStage.error = it.className.message
+                        binding.etAddress.requestFocus()
+                        binding.etAddress.error = it.address.message
                     }
                 }
             }
@@ -153,7 +167,7 @@ class SignupFragment : Fragment() {
     private fun showStagesSpinner(position: Int) {
         binding.etStage.apply {
             showDropDown()
-            className = arrayAdapter.getItem(position)!!
+            //className = arrayAdapter.getItem(position)!!
         }
 
     }
@@ -165,5 +179,12 @@ class SignupFragment : Fragment() {
         startActivity(intent)
     }
 
+    private fun insertData(teacher: RegisterResponse?) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            teacher?.let { teacherResponse ->
+                ModelPreferencesManager.put(teacherResponse, STUDENT_KEY)
+            }
+        }
+    }
 
 }

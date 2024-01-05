@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.studentapplication.R
+import com.example.studentapplication.utils.ViewsUtils.showBottomNav
 
 class LecturesFragment : Fragment() {
 
@@ -16,6 +17,11 @@ class LecturesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_lectures, container, false)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        showBottomNav()
     }
 
 

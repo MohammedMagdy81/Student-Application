@@ -1,20 +1,21 @@
 package com.example.studentapplication.domin.repository
 
-import com.example.studentapplication.data.remote.response.ForgetPasswordResponse
-import com.example.studentapplication.data.remote.response.LogoutResponse
-import com.example.studentapplication.data.remote.response.StudentDto
-import com.example.studentapplication.domin.model.ForgetPasswordRequest
-import com.example.studentapplication.domin.model.Student
-import com.example.studentapplication.utils.State
+import com.example.studentapplication.data.remote.response.auth.LoginResponse
+import com.example.studentapplication.data.remote.response.auth.RegisterResponse
+import retrofit2.Response
 
 interface AuthRepository {
 
-    suspend fun register(student: Student): State<StudentDto?>
+    suspend fun register(
+        email: String,
+        password: String,
+        name: String,
+        phone: String,
+        address: String,
+        srialNumber: String
+    ): Response<RegisterResponse?>
 
-    suspend fun login(email: String, password: String): State<StudentDto?>
-
-
-
+    suspend fun login(email: String, password: String): Response<LoginResponse?>
 
 
 

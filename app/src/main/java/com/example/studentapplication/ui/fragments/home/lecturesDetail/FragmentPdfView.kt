@@ -11,7 +11,6 @@ import com.downloader.Error
 import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
 import com.example.studentapplication.databinding.FragmentPdfViewBinding
-import com.example.studentapplication.utils.FileUtils
 import es.dmoral.toasty.Toasty
 import java.io.File
 
@@ -30,16 +29,16 @@ class FragmentPdfView : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.progressBar.visibility = View.VISIBLE
-        val fileName = "myLecture.pdf"
-        downloadPdfFromInternet(
-            args.pdfUri,
-            FileUtils.getRootDirPath(requireContext()),
-            fileName
-        )
-    }
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        binding.progressBar.visibility = View.VISIBLE
+//        val fileName = "myLecture.pdf"
+//        downloadPdfFromInternet(
+//            args.pdfUri,
+//            FileUtils.getRootDirPath(requireContext()),
+//            fileName
+//        )
+//    }
 
     private fun downloadPdfFromInternet(url: String, dirPath: String, fileName: String) {
         PRDownloader.download(

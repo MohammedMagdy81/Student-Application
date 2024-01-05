@@ -43,8 +43,8 @@
     <string name="notifications">الإشعارات</string>
     <string name="privacy_and_security">الخصوصية والأمان</string>
     <string name="support_amp_about">سجل النشاطات</string>
-    <string name="my_lectures">My Lectures</string>
-    <string name="help">Help &amp; Support</string>
+    <string name="my_lectures">محاضراتي</string>
+    <string name="help">الدعم &amp; المساعدة </string>
     <string name="quiz">الامتحانات</string>
 
     <string name="name">الاسم</string>
@@ -60,9 +60,28 @@
     <string name="lectures">المحاضرات</string>
     <string name="tv_header2_home">ماذا تحب أن تتعلم اليوم \n استكشف الان </string>
     <string name="no_quiz">لا يتوفر امتحانات!</string>
-    <string name="there_are_no_exams_available_now">There are no exams \n available now</string>
+    <string name="there_are_no_exams_available_now">لا يوجد امتحانات متوفرة الان </string>
     <string name="stay_updated">stay notified about new \nlectures and any updates</string>
     <string name="allow">سماح</string>
     <string name="skip">تخطي</string>
+
+    <string name="lecture_desc">وصف المحاضرة</string>
+    <string name="lecture_note">ملاحظة عن المحاضرة</string>
+    <string name="view_pdf">مشاهدة الملف </string>
+    <string name="enter_address">أدخل العنوان </string>
+
+    <string name="logout">تسجيل الخروج</string>
+    <string name="enter_code">أدخل كود المحاضرة</string>
+    <string name="logout_from_application">تسجيل الخروج من التطبيق ؟</string>
+    <string name="account">الصفحة الشخصية</string>
+
+    <string name="no_internet_connection">لا يتوفر انترنت !</string>
+    <string name="no_item_found">لا يتوفر عناصر حاليا !</string>
+
+    <string name="quiz_name">اسم الامتحان </string>
+    <string name="quiz_subject">مادة الامتحان </string>
+    <string name="quiz_time">وقت الامتحان </string>
+    <string name="quiz_questions_count">عدد الاسألة </string>
+
 
 </resources>

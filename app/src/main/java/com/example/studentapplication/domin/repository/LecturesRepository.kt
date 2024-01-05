@@ -6,5 +6,5 @@ import retrofit2.Response
 
 interface LecturesRepository {
 
-    suspend fun getAllLectures(token:String): State<List<GetLecturesResponseItem>>
+    suspend fun getAllLectures(token:String): Response<List<GetLecturesResponseItem>>
 }

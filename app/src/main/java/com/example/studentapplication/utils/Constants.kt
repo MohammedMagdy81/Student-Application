@@ -1,8 +1,7 @@
 package com.example.studentapplication.utils
 
 object Constants {
-    const val BASE_URL="https://www.manasa.com/"
-    const val USER_PREFERENCES ="userPref"
-    const val EMAIL_KEY= "EMAIL_KEY"
-    const val TOKEN_KEY = "TOKEN_KEY"
+    const val BASE_URL="https://ee48-45-243-75-234.ngrok-free.app/"
+    const val STUDENT_KEY="StudentKey"
+
 }

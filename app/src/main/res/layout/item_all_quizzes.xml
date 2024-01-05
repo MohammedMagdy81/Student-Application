@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="6dp"
+    android:layout_marginVertical="8dp"
+    app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/card_bg"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tvQuizName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:gravity="start"
+            android:text="@string/quiz_name"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/quiName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:paddingStart="10dp"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvQuizName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvQuizName"
+            tools:text="Quiz About Phisics" />
+
+        <TextView
+            android:id="@+id/tvQuizSubject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/quiz_subject"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@id/tvQuizName"
+            app:layout_constraintTop_toBottomOf="@id/tvQuizName" />
+
+        <TextView
+            android:id="@+id/quiSubject"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_bold"
+
+            android:paddingStart="10dp"
+
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvQuizSubject"
+            app:layout_constraintEnd_toEndOf="@id/quiName"
+            app:layout_constraintTop_toTopOf="@id/tvQuizSubject"
+            tools:text="Chemsitry " />
+
+        <TextView
+            android:id="@+id/tvQuizTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/quiz_time"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@id/tvQuizSubject"
+            app:layout_constraintTop_toBottomOf="@id/tvQuizSubject" />
+
+        <TextView
+            android:id="@+id/quiTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_bold"
+
+            android:paddingStart="10dp"
+
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvQuizTime"
+            app:layout_constraintEnd_toEndOf="@id/quiName"
+            app:layout_constraintTop_toTopOf="@id/tvQuizTime"
+            tools:text="30 Min " />
+
+        <TextView
+            android:id="@+id/tvQuizQuestionsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/quiz_questions_count"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@id/tvQuizTime"
+            app:layout_constraintTop_toBottomOf="@id/tvQuizTime" />
+
+        <TextView
+            android:id="@+id/quiQuestionsCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_bold"
+            android:paddingStart="10dp"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvQuizQuestionsCount"
+            app:layout_constraintEnd_toEndOf="@id/quiName"
+            app:layout_constraintTop_toTopOf="@id/tvQuizQuestionsCount"
+            tools:text="3 Questions " />
+
+        <ImageView
+            android:id="@+id/imgCheckMark"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintTop_toBottomOf="@id/tvQuizQuestionsCount"
+            app:layout_constraintStart_toStartOf="@id/tvQuizQuestionsCount"
+            android:layout_marginTop="12dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_check_mark"
+            />
+
+        <TextView
+            android:id="@+id/tvQuizComplete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_bold"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:visibility="gone"
+
+            app:layout_constraintBottom_toBottomOf="@id/imgCheckMark"
+            app:layout_constraintEnd_toEndOf="@id/quiQuestionsCount"
+            app:layout_constraintStart_toEndOf="@+id/imgCheckMark"
+            app:layout_constraintTop_toTopOf="@id/imgCheckMark"
+            android:text="@string/tv_quiz_completed" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
