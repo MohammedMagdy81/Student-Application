@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/settings"
+        android:fontFamily="@font/open_sans_medium"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,6 +36,7 @@
         android:layout_marginTop="24dp"
         android:text="@string/account"
         android:textColor="@color/black"
+        android:fontFamily="@font/open_sans_medium"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@id/settings_icBack"
         app:layout_constraintTop_toBottomOf="@id/tvSettings" />
@@ -50,20 +52,21 @@
         app:layout_constraintTop_toBottomOf="@id/tvAccount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent=".8"
-
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/light_gray"
-            android:padding="8dp">
+            android:paddingBottom="20dp"
+           >
 
             <ImageView
                 android:id="@+id/icEditProfile"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:layout_margin="12dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginVertical="24dp"
                 android:padding="4dp"
                 android:src="@drawable/edit_profile"
                 app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +89,7 @@
                 android:id="@+id/icNotification"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="24dp"
                 android:padding="4dp"
                 android:src="@drawable/notification"
                 app:layout_constraintStart_toStartOf="@id/icEditProfile"
@@ -109,7 +112,7 @@
                 android:id="@+id/icPrivacy"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="24dp"
                 android:padding="4dp"
 
                 android:src="@drawable/security"
@@ -138,8 +141,9 @@
         android:id="@+id/tvSupport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="32dp"
         android:text="@string/support_amp_about"
+        android:fontFamily="@font/open_sans_medium"
         android:textColor="@color/black"
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="@id/tvAccount"
@@ -148,7 +152,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -191,8 +195,9 @@
                 android:id="@+id/icHelp"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="24dp"
                 android:padding="4dp"
+                android:layout_marginHorizontal="12dp"
                 android:src="@drawable/help"
                app:layout_constraintTop_toBottomOf="@id/icMyLectures"
                 app:layout_constraintStart_toStartOf="@id/icMyLectures"/>
@@ -214,7 +219,7 @@
                 android:id="@+id/icLogout"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="24dp"
                 android:padding="4dp"
                 android:src="@drawable/logout"
                 app:layout_constraintTop_toBottomOf="@id/icHelp"

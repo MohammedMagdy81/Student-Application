@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="splash_bg">#8BF0F5F9</color>
-    <color name="light_gray">#0C222444</color>
+    <color name="light_gray">#1B222444</color>
     <color name="home_background_color">#F0F3F8</color>
     <color name="blue_color">#2778F0</color>
     <color name="dark_blue_color">#2A2575</color>
@@ -18,6 +18,9 @@
 
 
     <color name="color_red">#FF1F1F</color>
+    <color name="color_dark_green">#AB004643</color>
+    <color name="color_light_green">#AEABD1C6</color>
+
 
 
 </resources>

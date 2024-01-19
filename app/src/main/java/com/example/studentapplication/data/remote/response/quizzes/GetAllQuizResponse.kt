@@ -4,6 +4,7 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class GetAllQuizResponse(
 
     @field:SerializedName("studentsQuizzes")
@@ -24,7 +25,7 @@ data class GetAllQuizResponse(
 
     @field:SerializedName("subjectName")
     val subjectName: String? = null
-)
+) : Parcelable
 
 @Parcelize
 data class StudentsQuizzes(
@@ -54,6 +55,7 @@ data class StudentsQuizzes(
     val studentName: String? = null,
 ) : Parcelable
 
+@Parcelize
 data class QuestionsItem(
 
     @field:SerializedName("wrongAnswers")
@@ -78,5 +80,10 @@ data class QuestionsItem(
     val id: Int? = null,
 
     @field:SerializedName("correctAnwer")
-    val correctAnwer: String? = null
-)
+    val correctAnwer: String? = null,
+
+    val checkedPosition: Int=-1
+
+) : Parcelable {
+
+}

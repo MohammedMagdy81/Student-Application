@@ -26,8 +26,8 @@
         android:label="fragment_quiz"
         tools:layout="@layout/fragment_quiz" >
         <action
-            android:id="@+id/action_quizFragment_to_questionsQuizFragment"
-            app:destination="@id/questionsQuizFragment" />
+            android:id="@+id/action_quizFragment_to_quizQuestionsFragment2"
+            app:destination="@id/quizQuestionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -75,8 +75,13 @@
             app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/questionsQuizFragment"
-        android:name="com.example.studentapplication.ui.fragments.home.questionsQuiz.QuestionsQuizFragment"
-        android:label="fragment_questions_quiz"
-        tools:layout="@layout/fragment_questions_quiz" />
+        android:id="@+id/quizQuestionsFragment"
+        android:name="com.example.studentapplication.ui.fragments.home.quizQuestions.QuizQuestionsFragment"
+        android:label="fragment_quiz_questions"
+        tools:layout="@layout/fragment_quiz_questions" >
+        <argument
+            android:name="quiz"
+            app:argType="com.example.studentapplication.data.remote.response.quizzes.GetAllQuizResponse" />
+    </fragment>
+
 </navigation>

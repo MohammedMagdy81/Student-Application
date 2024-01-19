@@ -88,7 +88,10 @@
     <string name="quiz_subject">Quiz Subject</string>
     <string name="quiz_time">Quiz Time</string>
     <string name="quiz_questions_count">Questions Count</string>
-    <string name="tv_quiz_completed">تم الامتحان بنجاح</string>
+    <string name="tv_quiz_completed">The exam was successful </string>
+    <string name="go_to_quiz">Go To Quiz</string>
+    <string name="sure_go_to_quiz">if you click GO , You should not go out or consider yourself examined !</string>
+    <string name="submit">Submit</string>
 
 
 </resources>

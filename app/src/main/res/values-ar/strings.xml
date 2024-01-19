@@ -83,5 +83,12 @@
     <string name="quiz_time">وقت الامتحان </string>
     <string name="quiz_questions_count">عدد الاسألة </string>
 
+    <string name="go_to_quiz">الذهاب الي الامتحان </string>
+    <string name="sure_go_to_quiz">لو قمت بالضغط علي زر الذهاب لا ينبغي لك الخروج وإلا ستعتبر قد أديت الامتحان !</string>
+
+    <string name="submit">تأكيد</string>
+    <string name="tv_quiz_completed">تم الامتحان بنجاح</string>
+
+
 
 </resources>

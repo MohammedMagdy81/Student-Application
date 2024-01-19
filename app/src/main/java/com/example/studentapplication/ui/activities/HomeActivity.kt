@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.studentapplication.R
@@ -20,51 +21,38 @@ import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
 
 @AndroidEntryPoint
+
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    val fragment = HomeFragment()
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.bottomNavigation.setItemSelected(R.id.homeFragment)
-        binding.bottomNavigation.setOnItemSelectedListener {
-            when (it) {
+        val navHostFragment = supportFragmentManager.findFragmentById(
+            R.id.fragmentHomeContainerView
+        ) as NavHostFragment
+
+        navController = navHostFragment.navController
+
+        binding.bottomNavigation.setOnItemSelectedListener { itemId ->
+            when (itemId) {
                 R.id.homeFragment -> {
-                    openHomePage()
+                    navController.navigate(R.id.homeFragment)
                 }
-
                 R.id.quizFragment -> {
-                    val quizFragment = QuizFragment()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView, quizFragment).commit()
-
+                    navController.navigate(R.id.quizFragment)
                 }
-
                 R.id.lecturesFragment -> {
-                    val lecturesFragment = LecturesFragment()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView, lecturesFragment).commit()
-
+                    navController.navigate(R.id.lecturesFragment)
                 }
-
                 R.id.settingsFragment -> {
-                    val settingsFragment = SettingsFragment()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView, settingsFragment).commit()
-
+                    navController.navigate(R.id.settingsFragment)
                 }
-
             }
         }
-
-    }
-
-    private fun openHomePage() {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainerView, fragment)
-        transaction.commit()
     }
 }

@@ -5,13 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.example.studentapplication.R
 import com.example.studentapplication.data.local.preferences.ModelPreferencesManager
 import com.example.studentapplication.data.remote.response.auth.RegisterResponse
 import com.example.studentapplication.data.remote.response.quizzes.GetAllQuizResponse
 import com.example.studentapplication.data.remote.response.quizzes.QuestionsItem
 import com.example.studentapplication.databinding.FragmentQuizBinding
+import com.example.studentapplication.ui.fragments.home.quizQuestions.QuizQuestionsFragment
 import com.example.studentapplication.utils.Constants
 import com.example.studentapplication.utils.State
 import com.example.studentapplication.utils.ViewsUtils.hideViews
@@ -21,13 +28,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
 
 @AndroidEntryPoint
-class QuizFragment : Fragment(), IQuizClick {
+class QuizFragment : Fragment() {
 
     private lateinit var binding: FragmentQuizBinding
     private val viewModel by viewModels<QuizViewModel>()
-    private val adapter by lazy {
-        AllQuizzesAdapter(emptyList(), this)
-    }
+    private lateinit var adapter: AllQuizzesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +40,43 @@ class QuizFragment : Fragment(), IQuizClick {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentQuizBinding.inflate(inflater)
+        adapter = AllQuizzesAdapter(emptyList()) {
+            showGoToQuizDialog {
+                val action = QuizFragmentDirections.actionQuizFragmentToQuizQuestionsFragment2(it)
+                findNavController().navigate(action)
+            }
+
+
+
+
+        }
+
+
         return binding.root
+    }
+
+    private fun showGoToQuizDialog(onGo: () -> Unit) {
+        val dialog = AlertDialog.Builder(requireContext()).create()
+        val view = layoutInflater.inflate(R.layout.dialog_logout, null)
+
+        val btnConfirm = view.findViewById<Button>(R.id.btnConfirmLogout)
+        btnConfirm.text = getString(R.string.go_to_quiz)
+
+        val btnCancel = view.findViewById<Button>(R.id.btnCancelLogout)
+        val textView = view.findViewById<TextView>(R.id.tvLogoutFromApp)
+        textView.text = getString(R.string.sure_go_to_quiz)
+        dialog.setView(view)
+
+        btnConfirm.setOnClickListener {
+            onGo.invoke()
+            dialog.dismiss()
+        }
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -129,11 +170,6 @@ class QuizFragment : Fragment(), IQuizClick {
     override fun onStart() {
         super.onStart()
         showBottomNav()
-    }
-
-    override fun onQuizClick(questions: List<QuestionsItem?>?) {
-
-
     }
 
 
