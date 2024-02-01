@@ -1,31 +1,23 @@
 package com.example.studentapplication.ui.fragments.home.quiz
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.studentapplication.R
-import com.example.studentapplication.data.local.preferences.ModelPreferencesManager
-import com.example.studentapplication.data.remote.response.auth.RegisterResponse
 import com.example.studentapplication.data.remote.response.quizzes.GetAllQuizResponse
-import com.example.studentapplication.data.remote.response.quizzes.QuestionsItem
 import com.example.studentapplication.databinding.FragmentQuizBinding
-import com.example.studentapplication.ui.fragments.home.quizQuestions.QuizQuestionsFragment
-import com.example.studentapplication.utils.Constants
 import com.example.studentapplication.utils.State
 import com.example.studentapplication.utils.ViewsUtils.hideViews
 import com.example.studentapplication.utils.ViewsUtils.showBottomNav
 import com.example.studentapplication.utils.ViewsUtils.showViews
 import dagger.hilt.android.AndroidEntryPoint
-import es.dmoral.toasty.Toasty
 
 @AndroidEntryPoint
 class QuizFragment : Fragment() {

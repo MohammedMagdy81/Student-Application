@@ -1,6 +1,5 @@
-package com.example.studentapplication.ui.fragments.main.signup
+package com.example.studentapplication.ui.fragments.auth.signup
 
-import com.example.studentapplication.domin.model.Student
 import com.example.studentapplication.utils.AuthValidations
 import com.example.studentapplication.utils.genericFunctions.*
 

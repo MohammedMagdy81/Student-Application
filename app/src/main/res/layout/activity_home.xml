@@ -37,4 +37,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/loading_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CC000000"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/main_loading_spinkit"
+            style="@style/SpinKitView.Large.CubeGrid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:SpinKit_Color="@android:color/white" />
+
+        <TextView
+            android:id="@+id/main_loading_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/submit_answers"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

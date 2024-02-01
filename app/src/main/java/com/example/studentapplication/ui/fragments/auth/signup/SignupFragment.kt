@@ -1,11 +1,9 @@
-package com.example.studentapplication.ui.fragments.main.signup
+package com.example.studentapplication.ui.fragments.auth.signup
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import android.telephony.TelephonyManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,8 +22,6 @@ import com.example.studentapplication.ui.activities.MainActivity
 import com.example.studentapplication.utils.AuthValidations
 import com.example.studentapplication.utils.Constants.STUDENT_KEY
 import com.example.studentapplication.utils.State
-import com.example.studentapplication.utils.ViewsUtils.hideViews
-import com.example.studentapplication.utils.ViewsUtils.showViews
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

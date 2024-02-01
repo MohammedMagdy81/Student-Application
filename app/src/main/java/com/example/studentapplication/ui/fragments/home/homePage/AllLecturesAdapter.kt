@@ -1,18 +1,12 @@
 package com.example.studentapplication.ui.fragments.home.homePage
 
-import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
 import com.example.studentapplication.R
 import com.example.studentapplication.data.remote.response.get_lectures.GetLecturesResponseItem
 import com.example.studentapplication.databinding.ItemLayoutLecturesBinding
+import com.squareup.picasso.LruCache
 import com.squareup.picasso.Picasso
 
 class AllLecturesAdapter(
@@ -22,6 +16,7 @@ class AllLecturesAdapter(
 
     inner class AllLecturesViewHolder(val itemBinding: ItemLayoutLecturesBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
+
         fun bind(currentLecture: GetLecturesResponseItem?) {
             currentLecture?.let {
                 itemBinding.apply {
@@ -29,32 +24,13 @@ class AllLecturesAdapter(
                     lecturesPrice.text = "${it.lecture_Price} LE"
                     lecturesName.text = it.lecture_Name
                     subjectName.text = it.lecture_Subject
-                    Glide.with(itemBinding.root.context).load(currentLecture.pictureUrl)
-                        .listener(object : RequestListener<Drawable> {
-                            override fun onLoadFailed(
-                                e: GlideException?,
-                                model: Any?,
-                                target: Target<Drawable>?,
-                                isFirstResource: Boolean
-                            ): Boolean {
-                                Log.d("GlideException", "$e")
-                                Log.d("GlideException", "${e?.message}")
-                                Log.d("GlideException", "${e?.cause}")
-                                return false
-                            }
 
-                            override fun onResourceReady(
-                                resource: Drawable?,
-                                model: Any?,
-                                target: Target<Drawable>?,
-                                dataSource: DataSource?,
-                                isFirstResource: Boolean
-                            ): Boolean {
-                                Log.d("GlideException", "$dataSource")
-                                return false
-                            }
-
-                        })
+                    Picasso.get()
+                        .load(it.pictureUrl)
+                        .resize(700, 600)
+                        .centerCrop()
+                        .placeholder(R.drawable.lectures)
+                        .error(R.drawable.ic_error2)
                         .into(imageLecture)
 
                 }

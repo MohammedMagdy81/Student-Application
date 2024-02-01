@@ -92,6 +92,9 @@
     <string name="go_to_quiz">Go To Quiz</string>
     <string name="sure_go_to_quiz">if you click GO , You should not go out or consider yourself examined !</string>
     <string name="submit">Submit</string>
+    <string name="submit_answers">ٍSubmit Answers…</string>
+    <string name="quiz_submitted_successfully">Quiz Aswers Submitted Successfully</string>
+    <string name="sure_submit_answers">Are You Sure Submit Your Answers ?</string>
 
 
 </resources>

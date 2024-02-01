@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.studentapplication.ui.fragments.main.login.LoginFragment"
+        android:name="com.example.studentapplication.ui.fragments.auth.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
-        android:name="com.example.studentapplication.ui.fragments.main.signup.SignupFragment"
+        android:name="com.example.studentapplication.ui.fragments.auth.signup.SignupFragment"
         android:label="fragment_signup"
         tools:layout="@layout/fragment_signup" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.studentapplication.ui.fragments.main.splash.SplashFragment"
+        android:name="com.example.studentapplication.ui.fragments.auth.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/onboardingFragment"
-        android:name="com.example.studentapplication.ui.fragments.main.intro.OnboardingFragment"
+        android:name="com.example.studentapplication.ui.fragments.auth.intro.OnboardingFragment"
         android:label="OnboardingFragment"
         tools:layout="@layout/fragment_onboarding">
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/notificationFragment"
-        android:name="com.example.studentapplication.ui.fragments.main.notifications.NotificationFragment"
+        android:name="com.example.studentapplication.ui.fragments.auth.notifications.NotificationFragment"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
 </navigation>

@@ -21,6 +21,9 @@
     <color name="color_dark_green">#AB004643</color>
     <color name="color_light_green">#AEABD1C6</color>
 
+    <color name="color_disactive">#F8EBE9</color>
+    <color name="color_active">#E8F5EE</color>
+
 
 
 </resources>

@@ -1,24 +1,13 @@
-package com.example.studentapplication.ui.fragments.main.splash
+package com.example.studentapplication.ui.fragments.auth.splash
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.provider.Contacts
-import android.provider.Settings
-import android.telephony.TelephonyManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.studentapplication.R

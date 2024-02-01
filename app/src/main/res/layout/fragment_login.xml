@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/splash_bg"
-    tools:context=".ui.fragments.main.login.LoginFragment">
+    tools:context=".ui.fragments.auth.login.LoginFragment">
 
 
     <com.github.ybq.android.spinkit.SpinKitView
@@ -137,7 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:text="@string/signup"
-        android:textColor="@color/blue_color"
+        android:textColor="@color/dark_blue_color"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/tvDontHaveAccount"

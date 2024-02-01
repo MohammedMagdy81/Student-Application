@@ -79,10 +79,16 @@ data class QuestionsItem(
     @field:SerializedName("id")
     val id: Int? = null,
 
+    @field:SerializedName("url")
+    val url: String? = null,
+
     @field:SerializedName("correctAnwer")
     val correctAnwer: String? = null,
+    var shuffledAnswers: List<String?> = emptyList(),
 
     val checkedPosition: Int=-1
+
+
 
 ) : Parcelable {
 

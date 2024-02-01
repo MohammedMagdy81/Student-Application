@@ -3,6 +3,8 @@ package com.example.studentapplication.ui.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -41,7 +43,7 @@ class HomeActivity : AppCompatActivity() {
         binding.bottomNavigation.setOnItemSelectedListener { itemId ->
             when (itemId) {
                 R.id.homeFragment -> {
-                    navController.navigate(R.id.homeFragment)
+                    navController.navigate(R.id.homeFragmentDis)
                 }
                 R.id.quizFragment -> {
                     navController.navigate(R.id.quizFragment)
@@ -52,7 +54,32 @@ class HomeActivity : AppCompatActivity() {
                 R.id.settingsFragment -> {
                     navController.navigate(R.id.settingsFragment)
                 }
+
             }
+            true
         }
+        binding.bottomNavigation.setItemSelected(R.id.homeFragment, true)
+    }
+
+    fun showLoadingScreen(message: String) {
+        // 1 - set message
+        binding.mainLoadingTv.text = message
+
+        // 2 - set visibility
+        binding.loadingLayout.visibility = View.VISIBLE
+
+        // 3 - disable touch
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+        )
+    }
+
+    fun setHomeSelected() = binding.bottomNavigation.setItemSelected(R.id.homeFragment, true)
+    fun exitLoadingScreen() {
+        // 1 - set visibility
+        binding.loadingLayout.visibility = View.GONE
+        // 2 - enable touch
+        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
     }
 }

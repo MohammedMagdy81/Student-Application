@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/splash_bg"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.main.splash.SplashFragment">
+    tools:context=".ui.fragments.auth.splash.SplashFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:layout_width="wrap_content"

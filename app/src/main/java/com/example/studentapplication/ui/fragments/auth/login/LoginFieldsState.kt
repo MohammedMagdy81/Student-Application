@@ -1,4 +1,4 @@
-package com.example.studentapplication.ui.fragments.main.login
+package com.example.studentapplication.ui.fragments.auth.login
 
 import com.example.studentapplication.utils.AuthValidations
 import com.example.studentapplication.utils.genericFunctions.validateEmail

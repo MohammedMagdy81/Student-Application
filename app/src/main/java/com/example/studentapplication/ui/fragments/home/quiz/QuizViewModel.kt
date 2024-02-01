@@ -39,7 +39,7 @@ class QuizViewModel @Inject constructor(
                             _allQuizzes.postValue(State.Failure("هناك مشكلة في السيرفر "))
                         }
                         else -> {
-                            _allQuizzes.postValue(State.Failure("حدث حطأ غير متوقع حاول مرة أخري "))
+                            _allQuizzes.postValue(State.Failure("حدث خطأ غير متوقع حاول مرة أخري "))
                         }
                     }
                 }

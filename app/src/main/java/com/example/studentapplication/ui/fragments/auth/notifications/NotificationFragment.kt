@@ -1,4 +1,4 @@
-package com.example.studentapplication.ui.fragments.main.notifications
+package com.example.studentapplication.ui.fragments.auth.notifications
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.studentapplication.R
 import com.example.studentapplication.databinding.FragmentNotificationBinding
 import com.example.studentapplication.ui.activities.HomeActivity
 

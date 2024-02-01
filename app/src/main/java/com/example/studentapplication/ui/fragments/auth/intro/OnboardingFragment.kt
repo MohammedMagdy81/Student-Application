@@ -1,4 +1,4 @@
-package com.example.studentapplication.ui.fragments.main.intro
+package com.example.studentapplication.ui.fragments.auth.intro
 
 import android.os.Bundle
 import android.view.LayoutInflater

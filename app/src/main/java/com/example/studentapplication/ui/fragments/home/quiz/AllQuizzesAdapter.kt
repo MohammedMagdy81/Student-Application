@@ -11,6 +11,7 @@ import com.example.studentapplication.data.remote.response.quizzes.GetAllQuizRes
 import com.example.studentapplication.data.remote.response.quizzes.QuestionsItem
 import com.example.studentapplication.databinding.ItemAllQuizzesBinding
 import com.example.studentapplication.utils.Constants.STUDENT_KEY
+import com.example.studentapplication.utils.ViewsUtils.setTextColor
 
 class AllQuizzesAdapter(
     private var quizzesList: List<GetAllQuizResponse?>?,
@@ -28,19 +29,35 @@ class AllQuizzesAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(currentQuiz: GetAllQuizResponse?) {
             val name = ModelPreferencesManager.get<RegisterResponse>(STUDENT_KEY)?.name
+            val phone = ModelPreferencesManager.get<RegisterResponse>(STUDENT_KEY)?.phone
             val names = currentQuiz?.studentsQuizzes?.map { it?.studentName }
+            val phones = currentQuiz?.studentsQuizzes?.map { it?.phoneNumber }
             names?.let {
                 binding.apply {
-                    if (name in names) {
-                        imgCheckMark.visibility = View.VISIBLE
-                        tvQuizComplete.visibility = View.VISIBLE
-                        constraint.isClickable = false
-                        constraint.isEnabled = false
-                        root.isEnabled = false
-                        root.isClickable = false
-                    } else {
-                        imgCheckMark.visibility = View.GONE
-                        tvQuizComplete.visibility = View.GONE
+                    if (phones != null) {
+                        if (name in names && phone in phones) {
+                            imgCheckMark.visibility = View.VISIBLE
+                            tvQuizComplete.visibility = View.VISIBLE
+
+                            constraint.isClickable = false
+                            constraint.isEnabled = false
+                            root.isEnabled = false
+                            root.isClickable = false
+                            setTextColor(
+                                tvQuizName,
+                                quiName,
+                                tvQuizTime,
+                                quiTime,
+                                tvQuizSubject,
+                                quiSubject,
+                                tvQuizQuestionsCount,
+                                quiQuestionsCount,
+                                tvQuizComplete
+                            )
+                        } else {
+                            imgCheckMark.visibility = View.GONE
+                            tvQuizComplete.visibility = View.GONE
+                        }
                     }
 
                 }
@@ -54,6 +71,16 @@ class AllQuizzesAdapter(
                     quiQuestionsCount.setTextColor(Color.WHITE)
                     constraint.isClickable = false
                     constraint.isEnabled = false
+                    setTextColor(
+                        tvQuizName,
+                        quiName,
+                        tvQuizTime,
+                        quiTime,
+                        tvQuizSubject,
+                        quiSubject,
+                        tvQuizQuestionsCount,
+                        quiQuestionsCount
+                    )
                     root.isEnabled = false
                     root.isClickable = false
                 } else {

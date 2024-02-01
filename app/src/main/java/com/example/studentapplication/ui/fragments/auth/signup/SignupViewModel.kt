@@ -1,4 +1,4 @@
-package com.example.studentapplication.ui.fragments.main.signup
+package com.example.studentapplication.ui.fragments.auth.signup
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

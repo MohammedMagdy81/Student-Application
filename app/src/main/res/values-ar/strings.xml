@@ -89,6 +89,12 @@
     <string name="submit">تأكيد</string>
     <string name="tv_quiz_completed">تم الامتحان بنجاح</string>
 
+    <string name="submit_answers">جاري تسجيل الإجابات...</string>
+    <string name="quiz_submitted_successfully">تم تسجيل إجابات الامتحان بنجاح </string>
+
+    <string name="sure_submit_answers">هل تريد تسجيل الاجابات ؟</string>
+
+
 
 
 </resources>

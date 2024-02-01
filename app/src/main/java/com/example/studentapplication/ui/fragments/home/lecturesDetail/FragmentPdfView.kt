@@ -1,5 +1,6 @@
 package com.example.studentapplication.ui.fragments.home.lecturesDetail
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,13 +12,22 @@ import com.downloader.Error
 import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
 import com.example.studentapplication.databinding.FragmentPdfViewBinding
+import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
 import java.io.File
 
+@AndroidEntryPoint
 class FragmentPdfView : Fragment() {
 
     private lateinit var binding: FragmentPdfViewBinding
     private val args by navArgs<FragmentPdfViewArgs>()
+
+    private lateinit var fragmentContext: Context
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        fragmentContext = context
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,16 +39,21 @@ class FragmentPdfView : Fragment() {
         return binding.root
     }
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        binding.progressBar.visibility = View.VISIBLE
-//        val fileName = "myLecture.pdf"
-//        downloadPdfFromInternet(
-//            args.pdfUri,
-//            FileUtils.getRootDirPath(requireContext()),
-//            fileName
-//        )
-//    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.progressBar.visibility = View.VISIBLE
+        val fileName = "myLecture.pdf"
+        downloadPdfFromInternet(
+            args.pdfUri,
+            getRootDirPath(fragmentContext),
+            fileName
+        )
+    }
+
+    private fun getRootDirPath(context: Context): String {
+        return context.filesDir.absolutePath
+    }
 
     private fun downloadPdfFromInternet(url: String, dirPath: String, fileName: String) {
         PRDownloader.download(
@@ -48,7 +63,7 @@ class FragmentPdfView : Fragment() {
         ).build()
             .start(object : OnDownloadListener {
                 override fun onDownloadComplete() {
-                    Toast.makeText(requireContext(), "downloadComplete", Toast.LENGTH_LONG)
+                    Toast.makeText(fragmentContext, "downloadComplete", Toast.LENGTH_LONG)
                         .show()
                     val downloadedFile = File(dirPath, fileName)
                     binding.progressBar.visibility = View.GONE
@@ -56,7 +71,7 @@ class FragmentPdfView : Fragment() {
                 }
 
                 override fun onError(error: Error?) {
-                    Toasty.error(requireContext(), "Error in download PDF", Toast.LENGTH_LONG)
+                    Toasty.error(fragmentContext, "Error in download PDF", Toast.LENGTH_LONG)
                         .show()
                 }
 

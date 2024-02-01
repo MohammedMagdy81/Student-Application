@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_nav"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/homeFragmentDis">
 
     <fragment
         android:id="@+id/settingsFragment"
@@ -30,7 +30,7 @@
             app:destination="@id/quizQuestionsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/homeFragmentDis"
         android:name="com.example.studentapplication.ui.fragments.home.homePage.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
