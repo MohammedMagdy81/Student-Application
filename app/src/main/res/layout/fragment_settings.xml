@@ -11,8 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="@string/settings"
         android:fontFamily="@font/open_sans_medium"
+        android:text="@string/settings"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,9 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:fontFamily="@font/open_sans_medium"
         android:text="@string/account"
         android:textColor="@color/black"
-        android:fontFamily="@font/open_sans_medium"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@id/settings_icBack"
         app:layout_constraintTop_toBottomOf="@id/tvSettings" />
@@ -48,18 +48,16 @@
         android:layout_marginTop="12dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvAccount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent=".8"
-        >
+        app:layout_constraintWidth_percent=".8">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/light_gray"
-            android:paddingBottom="20dp"
-           >
+            android:paddingBottom="20dp">
 
             <ImageView
                 android:id="@+id/icEditProfile"
@@ -76,10 +74,10 @@
                 android:id="@+id/tvEditProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_bold"
                 android:text="@string/edit_profile"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:fontFamily="@font/open_sans_bold"
                 app:layout_constraintBottom_toBottomOf="@id/icEditProfile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/icEditProfile"
@@ -99,10 +97,10 @@
                 android:id="@+id/tvNotification"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_bold"
                 android:text="@string/notifications"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:fontFamily="@font/open_sans_bold"
                 app:layout_constraintBottom_toBottomOf="@id/icNotification"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/icNotification"
@@ -123,10 +121,10 @@
                 android:id="@+id/tvPrivacy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_bold"
                 android:text="@string/privacy_and_security"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:fontFamily="@font/open_sans_bold"
                 app:layout_constraintBottom_toBottomOf="@id/icPrivacy"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/icPrivacy"
@@ -142,8 +140,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/support_amp_about"
         android:fontFamily="@font/open_sans_medium"
+        android:text="@string/support_amp_about"
         android:textColor="@color/black"
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="@id/tvAccount"
@@ -155,16 +153,16 @@
         android:layout_marginTop="16dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvSupport"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent=".8">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="8dp"
-            android:background="@color/light_gray">
+            android:background="@color/light_gray"
+            android:padding="8dp">
 
             <ImageView
                 android:id="@+id/icMyLectures"
@@ -172,8 +170,8 @@
                 android:layout_height="28dp"
                 android:layout_margin="12dp"
                 android:padding="4dp"
-                android:visibility="gone"
                 android:src="@drawable/lectures"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -181,39 +179,39 @@
                 android:id="@+id/tvMyLectures"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_bold"
                 android:text="@string/my_lectures"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:visibility="gone"
-                android:fontFamily="@font/open_sans_bold"
                 app:layout_constraintBottom_toBottomOf="@id/icMyLectures"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/icMyLectures"
                 app:layout_constraintTop_toTopOf="@id/icMyLectures" />
 
             <ImageView
-                android:id="@+id/icHelp"
+                android:id="@+id/icLanguage"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
+                android:layout_marginHorizontal="12dp"
                 android:layout_marginTop="24dp"
                 android:padding="4dp"
-                android:layout_marginHorizontal="12dp"
-                android:src="@drawable/help"
-               app:layout_constraintTop_toBottomOf="@id/icMyLectures"
-                app:layout_constraintStart_toStartOf="@id/icMyLectures"/>
+                android:src="@drawable/ic_language"
+                app:layout_constraintStart_toStartOf="@id/icMyLectures"
+                app:layout_constraintTop_toBottomOf="@id/icMyLectures" />
 
             <TextView
-                android:id="@+id/tvHelp"
+                android:id="@+id/tvLanguage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/help"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="@string/language"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:fontFamily="@font/open_sans_bold"
-                app:layout_constraintBottom_toBottomOf="@id/icHelp"
+                app:layout_constraintBottom_toBottomOf="@id/icLanguage"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/icHelp"
-                app:layout_constraintTop_toTopOf="@id/icHelp" />
+                app:layout_constraintStart_toEndOf="@id/icLanguage"
+                app:layout_constraintTop_toTopOf="@id/icLanguage" />
 
             <ImageView
                 android:id="@+id/icLogout"
@@ -222,17 +220,17 @@
                 android:layout_marginTop="24dp"
                 android:padding="4dp"
                 android:src="@drawable/logout"
-                app:layout_constraintTop_toBottomOf="@id/icHelp"
-                app:layout_constraintStart_toStartOf="@id/icHelp"/>
+                app:layout_constraintStart_toStartOf="@id/icLanguage"
+                app:layout_constraintTop_toBottomOf="@id/icLanguage" />
 
             <TextView
                 android:id="@+id/tvlogout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_bold"
                 android:text="@string/logout"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:fontFamily="@font/open_sans_bold"
                 app:layout_constraintBottom_toBottomOf="@id/icLogout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/icLogout"

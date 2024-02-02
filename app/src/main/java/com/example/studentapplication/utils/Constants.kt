@@ -3,7 +3,7 @@ package com.example.studentapplication.utils
 import com.example.studentapplication.data.remote.response.quizzes.QuestionsItem
 
 object Constants {
-    const val BASE_URL = "https://18af-45-243-109-188.ngrok-free.app/"
+    const val BASE_URL = "https://5eb5-45-243-111-32.ngrok-free.app/"
     const val STUDENT_KEY = "StudentKey"
 
     fun QuestionsItem.generateShuffledAnswers(): List<String> {

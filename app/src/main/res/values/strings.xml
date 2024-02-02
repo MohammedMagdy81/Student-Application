@@ -95,6 +95,9 @@
     <string name="submit_answers">ٍSubmit Answers…</string>
     <string name="quiz_submitted_successfully">Quiz Aswers Submitted Successfully</string>
     <string name="sure_submit_answers">Are You Sure Submit Your Answers ?</string>
+    <string name="g_arabic">اللغة العربية</string>
+    <string name="g_english">English</string>
+    <string name="language">Language</string>
 
 
 </resources>

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import androidx.navigation.fragment.findNavController
 import com.example.studentapplication.R
 import com.example.studentapplication.data.local.preferences.ModelPreferencesManager
 import com.example.studentapplication.databinding.FragmentSettingsBinding
@@ -34,6 +35,9 @@ class SettingsFragment : Fragment() {
                     }
                     startActivity(intent)
                 }
+            }
+            tvLanguage.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsFragment_to_languageFragment)
             }
         }
         return binding.root

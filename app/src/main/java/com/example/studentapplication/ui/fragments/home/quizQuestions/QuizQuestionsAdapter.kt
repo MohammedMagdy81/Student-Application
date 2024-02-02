@@ -19,7 +19,7 @@ class QuizQuestionsAdapter(
 
     var selectAnswer: ISelectAnswer? = null
 
-    private val shuffledAnswersMap = mutableMapOf<Int, List<String>>()
+    private val shuffledAnswersMap = mutableMapOf<Int, MutableList<String?>>()
 
     inner class QuizQuestionsViewHolder(val itemBinding: ItemQuestionQuizBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
@@ -50,8 +50,11 @@ class QuizQuestionsAdapter(
             itemBinding.apply {
                 currentQuestion?.let { question ->
                     tvQuestion.text = question.name
-                    if (currentQuestion.url!=null){
-                        imageQuestion.visibility= View.VISIBLE
+
+
+
+                    if (currentQuestion.url != null) {
+                        imageQuestion.visibility = View.VISIBLE
                         Picasso.get()
                             .load(question.url)
                             .fit()
@@ -59,15 +62,16 @@ class QuizQuestionsAdapter(
                             .placeholder(R.drawable.lectures)
                             .error(R.drawable.ic_error2)
                             .into(imageQuestion)
-                    }else {
-                        imageQuestion.visibility= View.GONE
+                    } else {
+                        imageQuestion.visibility = View.GONE
                     }
-                    val answers = mutableListOf(
-                        question.wrongAnswers,
-                        question.wrongAnswers2,
-                        question.wrongAnswers3,
-                        question.correctAnwer
-                    )
+//                    val answers = mutableListOf(
+//                        question.wrongAnswers,
+//                        question.wrongAnswers2,
+//                        question.wrongAnswers3,
+//                        question.correctAnwer
+//                    )
+                    val answers = shuffledAnswersMap[position] ?: shuffleAnswers(question)
 
 
                     textView1.text = answers[0]
@@ -100,6 +104,18 @@ class QuizQuestionsAdapter(
                     }
                 }
             }
+        }
+
+        private fun shuffleAnswers(question: QuestionsItem): List<String?> {
+            val answers = mutableListOf(
+                question.wrongAnswers,
+                question.wrongAnswers2,
+                question.wrongAnswers3,
+                question.correctAnwer
+            )
+            answers.shuffle()
+            shuffledAnswersMap[adapterPosition] = answers
+            return answers
         }
 
         private fun updateCardBackground(cardView: ConstraintLayout, isSelected: Boolean) {

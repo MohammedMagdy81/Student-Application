@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_languageFragment"
+            app:destination="@id/languageFragment" />
     </fragment>
     <fragment
         android:id="@+id/quizFragment"
@@ -83,5 +86,10 @@
             android:name="quiz"
             app:argType="com.example.studentapplication.data.remote.response.quizzes.GetAllQuizResponse" />
     </fragment>
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="com.example.studentapplication.ui.fragments.settings.language.LanguageFragment"
+        android:label="LanguageFragment"
+        tools:layout="@layout/fragment_language"/>
 
 </navigation>

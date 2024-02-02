@@ -23,6 +23,7 @@
 
     <color name="color_disactive">#F8EBE9</color>
     <color name="color_active">#E8F5EE</color>
+    <color name="g_hint">#666666</color>
 
 
 
